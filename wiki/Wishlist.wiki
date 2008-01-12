@@ -2,6 +2,7 @@
 
 This page is used to track feature wishes so you don't have to mail them every time ;-)
 
+  * *Display fields with differences in other way than identical fields*
   * *Handling duplicates accross several address books*
   * *Ability to switch the address book after calling "Find and handle duplicates..."*
   * *Display all contact fields in the duplicate window for adding data*
