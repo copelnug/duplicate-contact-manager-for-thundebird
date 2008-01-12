@@ -3,7 +3,7 @@
 This page is used to track feature wishes so you don't have to mail them every time ;-)
 
   * *Handling duplicates accross several address books*
-  * *Ability to select the address book after calling "Find and handle duplicates..."*
+  * *Ability to switch the address book after calling "Find and handle duplicates..."*
   * *Display all contact fields in the duplicate window for adding data*
   * *Ability to save both individual contacts in the duplicate window without merging them*
   * *Store the information that a certain pair is not a duplicate in order to avoid presentation in future runs*
