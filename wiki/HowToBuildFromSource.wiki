@@ -6,7 +6,7 @@ Thunderbird add-ons are distributed as a single file with .XPI extension. These 
 
 == Details ==
 
-The build process could be done manually by creating a ZIP file with a certain folder structure, but it's easier to use the shell script *build.sh* in the root of the SVN trunk.
+The build process _could_ be done manually by creating a ZIP file with a certain folder structure, but it's easier to use the shell script *build.sh* in the root of the SVN trunk.
 
 In order to build the XPI file, simply go to the directory containing the file build.sh and run the script.
 
@@ -23,6 +23,6 @@ Please make sure you have the commands available in your path:
 
 == Tipp for developers using Windows ==
 
-You might already know this, since you also handle SVN with ease. But in case you don't: In order to run shell scripts under windows, you need a shell. You can install Cygwin.
+You might already know this, since you also handle SVN with ease. But in case you don't: In order to run shell scripts under windows, you need a shell. You can install free, open source [http://www.cygwin.com/ Cygwin].
 
 Under cygwin, you can also install the required tools mentioned above (called "findutils" and "zip").
