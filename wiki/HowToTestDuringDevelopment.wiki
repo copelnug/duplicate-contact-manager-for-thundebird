@@ -1,0 +1,57 @@
+#summary This page explains how to test during development without having to build the add-on binary
+
+== Introduction ==
+
+Normally, add-ons are installed into Thunderbird as .XPI files (see HowToBuildFromSource for an instruction on how to build this file). During development, it is much simpler to test changes without having to build this file every time.
+
+== Details ==
+
+*WARNING: This description works under _Windows_. The folder locations might be different under Unix/Linux, since extensions might be filed under the user's home directory there.*
+
+== 1. Uninstall the Duplicate Contact Manager Add-On ==
+
+You cannot have several versions installed at the same time, so in case you alredy installed the Duplicate Contact Manager Add-On in the usual way, please uninstall it now.
+
+== 2. Quit Thunderbird ==
+
+Yeah, shut it down.
+
+== 3. Locate Your Thunderbird Directory ==
+
+First you have to find the place where the Thunderbird installer put it's program files. On Windows, this usually is
+
+C:\Program Files\Mozilla\Thunderbird
+
+== 4. Create an extension folder ==
+
+In the program filder you should find a sub-directory named "*extensions*".
+
+In the extension folder, create a sub-directory named
+
+*{b4447f60-db9c-11da-a94d-0800200c9a66}*
+
+This cryptic string is the Duplicate Contact Manager's unique extension ID. The curly braces have to be at the beginning and end.
+
+You should have a directory like this now (you path might be different, of course):
+
+*C:\Program Files\Mozilla\Thunderbird\extensions\{b4447f60-db9c-11da-a94d-0800200c9a66}*
+
+== 5. Drop your development files there ==
+
+Now you have to put the extension code into that directory. The extension code is found in the [http://duplicate-contact-manager-for-thundebird.googlecode.com/svn/trunk/src/ src subdirectory] on SVN.
+
+You should now have the following directory structure:
+
+{{{
+{b4447f60-db9c-11da-a94d-0800200c9a66}/chrome            DIR
+{b4447f60-db9c-11da-a94d-0800200c9a66}/locale            DIR
+{b4447f60-db9c-11da-a94d-0800200c9a66}/skin              DIR
+{b4447f60-db9c-11da-a94d-0800200c9a66}/chrome.manifest
+{b4447f60-db9c-11da-a94d-0800200c9a66}/install.rdf
+}}}
+
+== 6. Start Thunderbird ==
+
+Now, if everything worked well, Thunderbird should automatically load and activate the extension you loaded into the folder above.
+
+You can now modify the source. Depending on the changes you make, in order to see the effects, you might have to close the "Find and handle duplicates" window (for changes within that window code), the Address Book (for changes in the menu) or completely restart Thunderbird (for changes in the extension meta data).
