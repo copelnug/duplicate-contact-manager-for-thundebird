@@ -1,13 +1,28 @@
 Information for developers willing to create an .xpi binary from the source.
 
-= Introduction =
+== Introduction ==
 
-Thunderbird add-ons are distributed as a single file with .XPI extension. These files are ZIP archives containing the files you can find in 
+Thunderbird add-ons are distributed as a single file with .XPI extension. These files are ZIP archives containing the files you can find in the "source" folder.
 
+== Details ==
 
-= Details =
+The build process could be done manually by creating a ZIP file with a certain folder structure, but it's easier to use the shell script *build.sh* in the root of the SVN trunk.
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+In order to build the XPI file, simply go to the directory containing the file build.sh and run the script.
+
+This will generate an output file named like this:
+
+*duplicate-contact-manager-YYYYMMDD-HHMM-tb.xpi*
+
+== Requirements ==
+
+Please make sure you have the commands available in your path:
+
+* find
+* zip
+
+== Tipp for developers using Windows ==
+
+You might already know this, since you also handle SVN with ease. But in case you don't: In order to run shell scripts under windows, you need a shell. You can install Cygwin.
+
+Under cygwin, you can also install the required tools mentioned above (called "findutils" and "zip").
