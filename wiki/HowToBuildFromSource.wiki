@@ -1,4 +1,4 @@
-#Information for developers willing to create an .xpi binary from the source.
+#summary Information for developers willing to create an .xpi binary from the source.
 
 == Introduction ==
 
