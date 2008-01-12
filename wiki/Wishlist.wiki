@@ -1,0 +1,7 @@
+#summary Wanted features for future releases
+
+This page is used to track feature wishes so you don't have to mail them every time ;-)
+
+* *Handling duplicates accross several address books*
+* *Display all contact fields in the duplicate window for adding data*
+* *Ability to save both individual contacts in the duplicate window without merging them*
