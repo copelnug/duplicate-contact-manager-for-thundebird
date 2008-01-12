@@ -1,0 +1,13 @@
+Information for developers willing to create an .xpi binary from the source.
+
+= Introduction =
+
+Thunderbird add-ons are distributed as a single file with .XPI extension. These files are ZIP archives containing the files you can find in 
+
+
+= Details =
+
+Add your content here.  Format your content with:
+  * Text in *bold* or _italic_
+  * Headings, paragraphs, and lists
+  * Automatic links to other wiki pages
