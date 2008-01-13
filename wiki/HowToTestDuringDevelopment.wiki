@@ -14,7 +14,7 @@ You cannot have several versions installed at the same time, so in case you alre
 
 == 2. Quit Thunderbird ==
 
-Yeah, shut it down.
+Yeah, shut it down completely.
 
 == 3. Locate Your Thunderbird Directory ==
 
@@ -22,32 +22,40 @@ First you have to find the place where the Thunderbird installer put it's progra
 
 C:\Program Files\Mozilla\Thunderbird
 
-== 4. Create an extension folder ==
+== 4. Locate the extensions folder ==
 
 In the program filder you should find a sub-directory named "*extensions*".
 
-In the extension folder, create a sub-directory named
+As mentioned above, this might differ on systems other than Windows.
 
-*{b4447f60-db9c-11da-a94d-0800200c9a66}*
+== 5. Checkout the source ==
 
-This cryptic string is the Duplicate Contact Manager's unique extension ID. The curly braces have to be at the beginning and end.
+Being in the extension folder you just found, now you have to check out the source from SVN.
+
+It is important not to checkout the entire trun, since this would create an unwanted folder. Instead, use the following URL to check out:
+
+{{{
+svn checkout https://duplicate-contact-manager-for-thundebird.googlecode.com/svn/trunk/%7bb4447f60-db9c-11da-a94d-0800200c9a66%7d/ --username [google_username]
+}}}
+
+If you don't want to commit any changes, e.g for testing only, you can use this anonymous command instead:
+
+{{{
+svn checkout http://duplicate-contact-manager-for-thundebird.googlecode.com/svn/trunk/%7bb4447f60-db9c-11da-a94d-0800200c9a66%7d/
+}}}
 
 You should have a directory like this now (you path might be different, of course):
 
 *C:\Program Files\Mozilla\Thunderbird\extensions\{b4447f60-db9c-11da-a94d-0800200c9a66}*
 
-== 5. Drop your development files there ==
-
-Now you have to put the extension code into that directory. The extension code is found in the [http://duplicate-contact-manager-for-thundebird.googlecode.com/svn/trunk/%7bb4447f60-db9c-11da-a94d-0800200c9a66%7d/ source sub-directory] on SVN.
-
-You should now have the following directory structure:
+Inside this folder, you should find the following contents:
 
 {{{
-{b4447f60-db9c-11da-a94d-0800200c9a66}/chrome            DIR
-{b4447f60-db9c-11da-a94d-0800200c9a66}/locale            DIR
-{b4447f60-db9c-11da-a94d-0800200c9a66}/skin              DIR
-{b4447f60-db9c-11da-a94d-0800200c9a66}/chrome.manifest
-{b4447f60-db9c-11da-a94d-0800200c9a66}/install.rdf
+./chrome            DIR
+./locale            DIR
+./skin              DIR
+./chrome.manifest
+./install.rdf
 }}}
 
 == 6. Start Thunderbird ==
