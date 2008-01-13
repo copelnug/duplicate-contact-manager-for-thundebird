@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+
+<?xml-stylesheet href="chrome://messenger/skin/dialogs.css" type="text/css"?>
+
+<!DOCTYPE window SYSTEM "chrome://duplicatecontactsmanager/content/duplicateContactsManager.dtd">
+
+<dialog xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	id="aboutDialog"
+	buttons="accept" 
+	onaccept="close();"
+	title="&aboutDialog.title;">
+	
+	<hbox>
+		<vbox align="center">
+			<image src="search-contacts.png" />
+		</vbox>
+	
+		<vbox flex="1" align="center">
+			<description value="&aboutDialog.title;"/>
+			<description value="&aboutDialog.version;"/>
+			<description value="&aboutDialog.description;"/>
+			<description value="&aboutDialog.author;"/>
+		</vbox>
+	</hbox>
+</dialog>
