@@ -38,7 +38,7 @@ You should have a directory like this now (you path might be different, of cours
 
 == 5. Drop your development files there ==
 
-Now you have to put the extension code into that directory. The extension code is found in the [http://duplicate-contact-manager-for-thundebird.googlecode.com/svn/trunk/src/ src subdirectory] on SVN.
+Now you have to put the extension code into that directory. The extension code is found in the [http://duplicate-contact-manager-for-thundebird.googlecode.com/svn/trunk/%7bb4447f60-db9c-11da-a94d-0800200c9a66%7d/ source sub-directory] on SVN.
 
 You should now have the following directory structure:
 
