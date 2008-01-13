@@ -400,9 +400,20 @@ var DuplicateContactsManagerDuplicateManager = {
 		document.getElementById('cancelbutton').setAttribute('label', g_DuplicateContactsManagerBundle.getString('QuitButtonLabel'));
 		
 		// show statistics
-		document.getElementById('resultNumBefore').setAttribute('value', (document.getElementById('resultNumBefore').getAttribute('value') + "" + this.numCardsBefore));
-		document.getElementById('resultNumAfter').setAttribute('value', (document.getElementById('resultNumAfter').getAttribute('value') + "" + (this.numCardsBefore - this.numCardsDeleted)));
-		document.getElementById('resultNumRemoved').setAttribute('value', (document.getElementById('resultNumRemoved').getAttribute('value') + "" + this.numCardsDeleted));
+		label = '';
+		
+		//document.getElementById('resultNumBefore').setAttribute('value', (document.getElementById('resultNumBefore').getAttribute('value') + "" + this.numCardsBefore));
+		label = document.getElementById('resultNumBefore').getAttribute('value');
+		document.getElementById('resultNumBefore').setAttribute('value', label + "" + (this.numCardsBefore - 0));
+		
+		//document.getElementById('resultNumAfter').setAttribute('value', (document.getElementById('resultNumAfter').getAttribute('value') + "" + (this.numCardsBefore - this.numCardsDeleted)));
+		label = document.getElementById('resultNumAfter').getAttribute('value');
+		document.getElementById('resultNumAfter').setAttribute('value', label + "" + (this.numCardsBefore - this.numCardsDeleted - 0));
+		
+		//document.getElementById('resultNumRemoved').setAttribute('value', (document.getElementById('resultNumRemoved').getAttribute('value') + "" + this.numCardsDeleted));
+		label = document.getElementById('resultNumRemoved').getAttribute('value');
+		document.getElementById('resultNumRemoved').setAttribute('value', label + "" + (this.numCardsDeleted - 0));
+		
 		//document.getElementById('resultNumRemovedAuto').setAttribute('value', this.numCardsDeletedAuto);
 		//document.getElementById('resultNumPresented').setAttribute('value', this.numCardPairsPresented);
 		//document.getElementById('resultNumRemovedMan').setAttribute('value', this.numCardsDeletedManually);
