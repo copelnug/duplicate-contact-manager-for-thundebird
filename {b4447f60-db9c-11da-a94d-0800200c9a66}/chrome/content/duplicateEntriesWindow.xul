@@ -80,8 +80,10 @@
 				-->
 			</vbox>
 			<vbox style="background-color: #FFFFFF; margin: 5px 20px 20px 20px; padding: 10px; border: 1px inset;">
+				<description>&handleDuplicates.endtext.helpDevelopment;</description>
+				<description><html:a class="text-link" href="&handleDuplicates.devSiteUrl;">&handleDuplicates.devSiteUrl;</html:a></description>
 				<description>&handleDuplicates.endtext.provideFeedback;</description>
-				<description>&handleDuplicates.author; &lt;<html:a class="text-link" href="mailto:&handleDuplicates.feedbackMail;">&handleDuplicates.feedbackMail;</html:a>&gt;</description>
+				<description><html:a class="text-link" href="mailto:&handleDuplicates.feedbackMail;?subject=Feedback">&handleDuplicates.feedbackMail;</html:a></description>
 			</vbox>
 		</vbox>
 	</hbox>
