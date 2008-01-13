@@ -1,8 +1,3 @@
-<!ENTITY aboutDialog.title				"Duplicate Contact Manager">
-<!ENTITY aboutDialog.description 		"Erleichtert das Auffinden und Entfernen von Dubletten im Persönlichen Adressbuch.">
-<!ENTITY aboutDialog.author 			"Marian Steinbach, 2006-2007">
-<!ENTITY aboutDialog.version  			"Version 0.3">
-
 <!-- Address Book Menu Toolbar -->
 <!ENTITY abookmenu.label							"Dubletten">
 <!ENTITY abookmenu.accesskey						"L">
@@ -31,9 +26,10 @@
 <!ENTITY handleDuplicates.endtext.numPresented		"Als Dubletten angezeigt: ">
 <!ENTITY handleDuplicates.endtext.numRemovedMan		"Manuell entfernte Kontakte: ">
 <!ENTITY handleDuplicates.endtext.numSkipped		"Übersprungene Dubletten: ">
-<!ENTITY handleDuplicates.endtext.provideFeedback	"Bitte helfen Sie, diese Erweiterung zu verbessern und mailen Sie Ihre Kommentare an:">
-<!ENTITY handleDuplicates.author					"Marian Steinbach">
-<!ENTITY handleDuplicates.feedbackMail				"marian@sendung.de">
+<!ENTITY handleDuplicates.endtext.helpDevelopment	"Sie können helfen, dieses Thunderbird Add-On zu verbessern, indem Sie Probleme melden, unsere Wunschliste ergänzen oder sogar Code beisteuern. Besuchen Sie unsere Entwickler-Seite unter:">
+<!ENTITY handleDuplicates.endtext.provideFeedback	"oder mailen Sie Ihr Feedback direkt an unsere öffentliche Mailingliste:">
+<!ENTITY handleDuplicates.feedbackMail				"duplicate-contact-manager-for-thunderbird@googlegroups.com">
+<!ENTITY handleDuplicates.devSiteUrl				"http://code.google.com/p/duplicate-contact-manager-for-thundebird/">
 
 <!ENTITY handleDuplicates.pleasepressstart			"Bitte Klicken Sie auf <span class='strong'>Start</span>.">
 
