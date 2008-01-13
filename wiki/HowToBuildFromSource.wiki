@@ -2,7 +2,7 @@
 
 == Introduction ==
 
-Thunderbird add-ons are distributed as a single file with .XPI extension. These files are ZIP archives containing the files you can find in the "source" folder.
+Thunderbird add-ons are distributed as a single file with .XPI extension. These files are ZIP archives containing the files you can find in the source folder "{b4447f60-db9c-11da-a94d-0800200c9a66}".
 
 == Details ==
 
