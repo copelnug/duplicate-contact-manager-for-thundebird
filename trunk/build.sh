@@ -1,12 +1,14 @@
 #!/usr/bin/bash
-# clean build directory
+
 # current dir is "duplicate-contact-manager-for-thunderbird"
+
+# clean build directory
 rm -rf build
 mkdir build
 
 # copy install.rdf and chrome.manifest
-cd src || exit
-# current dir is "duplicate-contact-manager-for-thunderbird/src"
+cd "{b4447f60-db9c-11da-a94d-0800200c9a66}" || exit
+# current dir is "duplicate-contact-manager-for-thunderbird/{b4447f60-db9c-11da-a94d-0800200c9a66}"
 
 cp "chrome.manifest" ../build/
 cp "install.rdf" ../build/
@@ -26,14 +28,14 @@ find . -name "*~" | xargs rm -f
 # remove .jEdit marks files
 find . -name "*.marks" | xargs rm -f
 
-zip -r duplicatecontactsmanager.zip *
+zip -r build.zip *
 
 cd ..
 # current dir is "duplicate-contact-manager-for-thunderbird"
 
-mv build/duplicatecontactsmanager.zip .
+mv build/build.zip .
 
 # rename zip to xpi
 DATE=$(date +"%Y%m%d-%H%M")
-mv duplicatecontactsmanager.zip duplicate-contact-manager-$DATE-tb.xpi
+mv build.zip duplicate-contact-manager-$DATE-tb.xpi
 
