@@ -34,6 +34,7 @@ cd ..
 # current dir is "duplicate-contact-manager-for-thunderbird"
 
 mv build/build.zip .
+rm -rf build
 
 # rename zip to xpi
 DATE=$(date +"%Y%m%d-%H%M")
