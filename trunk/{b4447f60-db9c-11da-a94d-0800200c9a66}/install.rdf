@@ -4,7 +4,7 @@
 	xmlns:em="http://www.mozilla.org/2004/em-rdf#">
 
 	<Description about="urn:mozilla:install-manifest">
-		<em:name>Duplicate Contact Manager (0.4 dev)</em:name>
+		<em:name>Duplicate Contact Manager</em:name>
 		<em:id>{b4447f60-db9c-11da-a94d-0800200c9a66}</em:id>
 		<em:version>0.4</em:version>
 		<em:description>Facilitates handling of duplicate contacts in your address books.</em:description>
