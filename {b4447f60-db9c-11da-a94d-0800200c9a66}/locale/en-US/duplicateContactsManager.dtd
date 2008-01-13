@@ -1,8 +1,3 @@
-<!ENTITY aboutDialog.title				"Duplicate Contacts Manager">
-<!ENTITY aboutDialog.description 		"Facilitates handling of duplicate contacts in your personal address book.">
-<!ENTITY aboutDialog.author 			"Marian Steinbach, 2006-2007">
-<!ENTITY aboutDialog.version  			"Version 0.3">
-
 <!-- Address Book Menu Toolbar -->
 <!ENTITY abookmenu.label							"Duplicates">
 <!ENTITY abookmenu.accesskey						"C">
@@ -31,9 +26,10 @@
 <!ENTITY handleDuplicates.endtext.numPresented		"Contact pairs presented: ">
 <!ENTITY handleDuplicates.endtext.numRemovedMan		"Contacts removed manually: ">
 <!ENTITY handleDuplicates.endtext.numSkipped		"Contacts skipped: ">
-<!ENTITY handleDuplicates.endtext.provideFeedback	"Please help to improve this extension and email your comments to:">
-<!ENTITY handleDuplicates.author					"Marian Steinbach">
-<!ENTITY handleDuplicates.feedbackMail				"marian@sendung.de">
+<!ENTITY handleDuplicates.endtext.helpDevelopment	"You can help us to improve this Thunderbird Add-On by filing bug reports, commenting the wishlist or even writing code. Please visit our development site:">
+<!ENTITY handleDuplicates.endtext.provideFeedback	"or send your feedback directly to our public mailing list:">
+<!ENTITY handleDuplicates.feedbackMail				"duplicate-contact-manager-for-thunderbird@googlegroups.com">
+<!ENTITY handleDuplicates.devSiteUrl				"http://code.google.com/p/duplicate-contact-manager-for-thundebird/">
 
 <!ENTITY handleDuplicates.pleasepressstart			"Please press <span class='strong'>Start</span>.">
 
