@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE overlay SYSTEM "chrome://duplicatecontactsmanager/locale/duplicateContactsManager.dtd">
+<?xml-stylesheet href="chrome://messenger/skin/addressbook/addressbook.css" type="text/css"?> 
+<?xml-stylesheet href="chrome://duplicatecontactsmanager/skin/duplicateContactsManager.css" type="text/css"?>
+<window
+    id="handleDuplicates-window"
+    title="&handleDuplicates.windowtitle;"
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	onload="DuplicateContactsManagerDuplicateManager.init()"
+    onunload="DuplicateContactsManagerDuplicateManager.OnUnloadWindow()"
+	width="560"
+	height="500">
+	
+	<script type="application/x-javascript" src="chrome://duplicatecontactsmanager/content/duplicateEntriesWindow.js"/>
+	
+	<stringbundleset id="duplicateContactsManagerStringbundleset">
+		<stringbundle id="bundle_duplicateContactsManager" src="chrome://duplicatecontactsmanager/locale/duplicateContactsManager.properties"/>
+	</stringbundleset>
+	
+	
+	<hbox flex="1" id="explanation">
+		<vbox flex="1" style="text-align: center">
+			<description class="explheader">&handleDuplicates.introheader;</description>
+			<description>&handleDuplicates.introtext;</description>
+			<description id="addressbookname">Untitled Address Book</description>
+			<description>&handleDuplicates.introtext2;</description>
+			<description>&handleDuplicates.introtext3;</description>
+			<description>&handleDuplicates.introtext4;</description>
+			<description>&handleDuplicates.pleasepressstart;</description>
+		</vbox>
+	</hbox>
+	<hbox flex="1" id="listboxpane" style="display: none;">
+		<listbox id="handleDuplicatesListbox" rows="8" flex="1">
+			<listcols><listcol flex="0" /><listcol flex="1" /><listcol flex="1" /></listcols>
+			<listhead>
+				<listheader id="fieldLabels" flex="0" class="fieldlabel" />
+				<listheader id="columnHeaderLeft" flex="1" class="used" oncommand="DuplicateContactsManagerDuplicateManager.toggleContactLeftRight('left')">
+					<vbox>
+						<box style="padding: 4px 0px 0px 0px;"><radiogroup id="lcg"><radio id="columnUseLeft" label="&handleDuplicates.firstcontact;" selected="true" oncommand="DuplicateContactsManagerDuplicateManager.toggleContactLeftRight('left')" /></radiogroup></box>
+						<box style="padding: 0px 0px 6px 20px;"><label id="columnKeptInfoLeft" value="&handleDuplicates.will_be_kept;" /></box>
+					</vbox>
+				</listheader>
+				<listheader id="columnHeaderRight" flex="1" class="unused" oncommand="DuplicateContactsManagerDuplicateManager.toggleContactLeftRight('right')">
+					<vbox>
+						<box style="padding: 4px 0px 0px 0px;"><radiogroup id="rcg"><radio id="columnUseRight" label="&handleDuplicates.secondcontact;" selected="false" oncommand="DuplicateContactsManagerDuplicateManager.toggleContactLeftRight('right')" /></radiogroup></box>
+						<box style="padding: 0px 0px 6px 20px;"><label id="columnKeptInfoRight" value="&handleDuplicates.will_be_removed;" /></box>
+					</vbox>
+				</listheader>
+			</listhead>
+			<listitem>
+				<listcell class="fieldlabel" label="First Name:"/>
+				<listcell id="cell_left_FirstName" class="used"><textbox value="George" flex="1" id="left_FirstName"/></listcell>
+				<listcell id="cell_right_FirstName" class="unused"><textbox value="GeeBoy" flex="1" id="right_FirstName"/></listcell>
+			</listitem>
+			<listitem>
+				<listcell class="fieldlabel" label="Last Name:"/>
+				<listcell id="cell_left_LastName"><textbox class="used" value="Hunter" flex="1" id="left_LastName"/></listcell>
+				<listcell id="cell_right_LastName"><textbox class="unused" value="H." flex="1" id="right_LastName"/></listcell>
+			</listitem>
+			<listitem>
+				<listcell class="fieldlabel" label="Display Name:"/>
+				<listcell class="used"><textbox value="George Hunter" flex="1" id="left_DisplayName"/></listcell>
+				<listcell class="unused"><textbox value="GeeBoy H." flex="1" id="right_DisplayName"/></listcell>
+			</listitem>
+		</listbox>
+	</hbox>
+	<hbox flex="1" id="endinfo" style="display: none;">
+		<vbox flex="1" style="text-align: center">
+			<description class="explheader">&handleDuplicates.endheader;</description>
+			<vbox style="background-color: #FFFFFF; margin: 10px 20px 5px 20px; padding: 10px; border: 1px inset;">
+				<description class="text-line" id="resultNumBefore" value="&handleDuplicates.endtext.numBefore;" />
+				<description class="text-line" id="resultNumAfter" value="&handleDuplicates.endtext.numAfter;" />
+				<description class="text-line" id="resultNumRemoved" value="&handleDuplicates.endtext.numRemoved;" />
+				<!--
+				<description class="text-line">&handleDuplicates.endtext.numRemovedAuto;<label class="text-line" id="resultNumRemovedAuto" value="" /></description>
+				<description class="text-line">&handleDuplicates.endtext.numPresented;<label class="text-line" id="resultNumPresented" value="" /></description>
+				<description class="text-line">&handleDuplicates.endtext.numRemovedMan;<label class="text-line" id="resultNumRemovedMan" value="" /></description>
+				<description class="text-line">&handleDuplicates.endtext.numSkipped;<label class="text-line" id="resultNumSkipped" value="" /></description>
+				-->
+			</vbox>
+			<vbox style="background-color: #FFFFFF; margin: 5px 20px 20px 20px; padding: 10px; border: 1px inset;">
+				<description>&handleDuplicates.endtext.provideFeedback;</description>
+				<description>&handleDuplicates.author; &lt;<html:a class="text-link" href="mailto:&handleDuplicates.feedbackMail;">&handleDuplicates.feedbackMail;</html:a>&gt;</description>
+			</vbox>
+		</vbox>
+	</hbox>
+	<hbox align="center" id="duplicatesButtonsBox">
+		<button	id="startbutton"
+			class="dialog"
+			label="&handleDuplicates.startbutton.label;"
+			disabled="false"
+			accesskey="&handleDuplicates.startbutton.accesskey;"
+			oncommand="DuplicateContactsManagerDuplicateManager.startSearch()" />
+		<button	id="skipnextbutton"
+			class="dialog"
+			label="&handleDuplicates.skipnextbutton.label;"
+			disabled="true"
+			accesskey="&handleDuplicates.skipnextbutton.accesskey;"
+			oncommand="DuplicateContactsManagerDuplicateManager.skipAndSearchNextDuplicate()"/>
+		<button	id="applynextbutton" flex="1"
+			class="dialog"
+			label="&handleDuplicates.applynextbutton.label;"
+			disabled="true"
+			visibility="hidden"
+			accesskey="&handleDuplicates.applynextbutton.accesskey;"
+			oncommand="DuplicateContactsManagerDuplicateManager.applyAndSearchNextDuplicate();" />
+		<spacer flex="3" />
+		<button	id="cancelbutton"
+			class="dialog"
+			label="&handleDuplicates.cancelbutton.label;"
+			disabled="false"
+			oncommand="window.close();" />
+	</hbox>
+	<statusbar id="duplicates-status-bar">
+		<statusbarpanel id="duplicateStatusText" flex="5">
+			<label id="duplicateStatusText_label" value="&handleDuplicates.status_default;"/>
+			<spacer flex="1"/>
+		</statusbarpanel>
+		<statusbarpanel id="duplicateProgressText" flex="1">
+			<label id="duplicateProgressText_label" value="" />
+		</statusbarpanel>
+		<statusbarpanel flex="0">
+			<progressmeter id="duplicateProgressMeter" mode="determined" value="0%" style="visibility: hidden"/>
+		</statusbarpanel>
+	</statusbar>
+</window>
