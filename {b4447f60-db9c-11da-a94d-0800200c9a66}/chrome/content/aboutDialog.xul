@@ -9,18 +9,26 @@
 	id="aboutDialog"
 	buttons="accept" 
 	onaccept="close();"
-	title="&aboutDialog.title;">
+	title="Duplicate Contact Manager">
 	
 	<hbox>
 		<vbox align="center">
 			<image src="search-contacts.png" />
 		</vbox>
-	
-		<vbox flex="1" align="center">
-			<description value="&aboutDialog.title;"/>
-			<description value="&aboutDialog.version;"/>
-			<description value="&aboutDialog.description;"/>
-			<description value="&aboutDialog.author;"/>
+		
+		<vbox flex="1" align="left" style="padding: 20px;">
+			<description style="font-weight: bold">Duplicate Contact Manager</description>
+			<description>Thunderbird add-on by Marian Steinbach</description>
+			<description></description>
+			<description></description>
+			<description>Add-On home page:</description>
+			<description><html:a style="text-decoration: underline; color: #0000ff;" href="https://addons.mozilla.org/thunderbird/addon/2505">https://addons.mozilla.org/thunderbird/addon/2505</html:a></description>
+			<description></description>
+			<description>Development page:</description>
+			<description><html:a style="text-decoration: underline; color: #0000ff;" href="http://code.google.com/p/duplicate-contact-manager-for-thundebird/">http://code.google.com/p/duplicate-contact-manager-for-thundebird/</html:a></description>
+			<description></description>
+			<description>Mailing list:</description>
+			<description><html:a style="text-decoration: underline; color: #0000ff;" href="http://groups.google.com/group/duplicate-contact-manager-for-thunderbird">http://groups.google.com/group/duplicate-contact-manager-for-thunderbird</html:a></description>
 		</vbox>
 	</hbox>
 </dialog>
