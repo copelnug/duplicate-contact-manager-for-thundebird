@@ -8,4 +8,4 @@ This page is used to track feature wishes so you don't have to mail them every t
   * *Display all contact fields in the duplicate window for adding data*
   * *Ability to save both individual contacts in the duplicate window without merging them*
   * *Store the information that a certain pair is not a duplicate in order to avoid presentation in future runs*
-  * *Option to save both contacts from a pair seperately, without merging, in ordert to allow for editing of both contacts*
+  * *Option to save both contacts from a pair seperately, without merging, in order to allow for editing of both contacts*
