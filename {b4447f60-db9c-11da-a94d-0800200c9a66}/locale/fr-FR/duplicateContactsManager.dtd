@@ -1,0 +1,51 @@
+<!-- Address Book Menu Toolbar -->
+<!ENTITY abookmenu.label							"Doublons">
+<!ENTITY abookmenu.accesskey						"D">
+<!ENTITY abookmenu.items.handleduplicates.label		"Cherche et traite les doublons...">
+<!ENTITY abookmenu.items.handleduplicates.accesskey	"C">
+
+<!-- Address Book Menu Toolbar -->
+<!ENTITY abooktoolbar.label							"Recherche des doublons">
+<!ENTITY abooktoolbar.tooltip						"Recherche les doublons de votre carnet d'adresses">
+
+<!-- Check and Handle Duplicates -->
+<!ENTITY handleDuplicates.windowtitle				"Recherche et traitement des doublons du Carnet d'Adresses">
+<!ENTITY handleDuplicates.introheader				"Comment ça marche ?">
+<!ENTITY handleDuplicates.introtext					"Les entrées qui semblent être en double vont maintenant être recherchées dans le carnet d'adresses sélectionné ci-dessous :">
+<!ENTITY handleDuplicates.introtext2				"À chaque fois qu'une paire de contacts en double est trouvée, elle vous sera proposée. <span class='strong'>C'est vous qui décidez</span> de celui que vous gardez et de celui que vous supprimez. Vous pouvez également éditer les données du contact que vous gardez.">
+<!ENTITY handleDuplicates.introtext3				"Vous pouvez tout arrêter à n'importe quel moment en pressant sur 'Annuler'. Si vous ne voulez pas traiter un doublon, utilisez le bouton 'Passer'.">
+<!ENTITY handleDuplicates.introtext4				"En fonction du nombre d'adresses et du CPU de votre ordinateur, ce processus peut prendre plusieurs minutes.">
+
+<!-- text after process has finished -->
+<!ENTITY handleDuplicates.endheader					"C'est bon.">
+<!ENTITY handleDuplicates.endtext					"Vous venez de vous débarrasser des doublons et pouvez maintenant continuer avec quelque chose de plus amusant.">
+<!ENTITY handleDuplicates.endtext.numBefore			"Nombre de contacts avant  : ">
+<!ENTITY handleDuplicates.endtext.numAfter			"Nombre de contacts après  : ">
+<!ENTITY handleDuplicates.endtext.numRemoved		"Nombre de contacts enlevés: ">
+<!ENTITY handleDuplicates.endtext.numRemovedAuto	"Contacts enlevés automatiquement : ">
+<!ENTITY handleDuplicates.endtext.numPresented		"Paires de contacts présentés : ">
+<!ENTITY handleDuplicates.endtext.numRemovedMan		"Contacts enlevés manuellement : ">
+<!ENTITY handleDuplicates.endtext.numSkipped		"Contacts passés : ">
+<!ENTITY handleDuplicates.endtext.provideFeedback	"Pour aider à améliorer cette extension, envoyez vos commentaires par email à :">
+<!ENTITY handleDuplicates.author					"Marian Steinbach">
+<!ENTITY handleDuplicates.feedbackMail				"marian@sendung.de">
+
+<!ENTITY handleDuplicates.pleasepressstart			"Appuyer sur <span class='strong'>Démarrer</span> SVP.">
+
+<!ENTITY handleDuplicates.startbutton.label			"Démarrer">
+<!ENTITY handleDuplicates.startbutton.accesskey		"D">
+<!ENTITY handleDuplicates.applynextbutton.label		"Appliquer et Continuer &#62;">
+<!ENTITY handleDuplicates.applynextbutton.accesskey	"A">
+<!ENTITY handleDuplicates.skipnextbutton.label		"Passer &#62;">
+<!ENTITY handleDuplicates.skipnextbutton.accesskey	"s">
+<!ENTITY handleDuplicates.cancelbutton.label		"Annuler">
+<!ENTITY handleDuplicates.firstcontact				"Premier Contact">
+<!ENTITY handleDuplicates.secondcontact				"Second Contact">
+<!ENTITY handleDuplicates.will_be_kept				"à conserver">
+<!ENTITY handleDuplicates.will_be_removed			"à enlever">
+<!ENTITY handleDuplicates.empty						"vide">
+<!ENTITY handleDuplicates.status_default			"Recherche des doublons en cours...">
+<!ENTITY handleDuplicates.status_nonefound			"Aucun doublon n'a été trouvé">
+<!ENTITY handleDuplicates.status_nfound				"&#x25;s doublons possibles ont été trouvés">
+<!ENTITY handleDuplicates.status_of					"&#x25;s sur &#x25;s">
+
