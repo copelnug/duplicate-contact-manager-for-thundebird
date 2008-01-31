@@ -507,6 +507,7 @@ var DuplicateContactsManagerDuplicateManager = {
 				var labelcell = document.createElement('listcell');
 				var cell1 = document.createElement('listcell');
 				var cell2 = document.createElement('listcell');
+				//var mergebutton = document.createElement('listcell');
 				
 				// save field in list for later retrieval if edited values
 				this.displayedFields[fieldCount] = g_addressBookFields[i];
@@ -612,7 +613,9 @@ var DuplicateContactsManagerDuplicateManager = {
 				// add cells to row
 				row.appendChild(labelcell);
 				row.appendChild(cell1);
+				//row.appendChild(mergebutton);
 				row.appendChild(cell2);
+				
 				// add row to list
 				this.list.appendChild(row);
 			}
