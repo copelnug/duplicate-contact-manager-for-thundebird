@@ -41,6 +41,7 @@
 						<box style="padding: 0px 0px 6px 20px;"><label id="columnKeptInfoLeft" value="&handleDuplicates.will_be_kept;" /></box>
 					</vbox>
 				</listheader>
+				<!--<listheader id="mergeButtonsCol" flex="0" class="fieldlabel" />-->
 				<listheader id="columnHeaderRight" flex="1" class="unused" oncommand="DuplicateContactsManagerDuplicateManager.toggleContactLeftRight('right')">
 					<vbox>
 						<box style="padding: 4px 0px 0px 0px;"><radiogroup id="rcg"><radio id="columnUseRight" label="&handleDuplicates.secondcontact;" selected="false" oncommand="DuplicateContactsManagerDuplicateManager.toggleContactLeftRight('right')" /></radiogroup></box>
@@ -51,16 +52,19 @@
 			<listitem>
 				<listcell class="fieldlabel" label="First Name:"/>
 				<listcell id="cell_left_FirstName" class="used"><textbox value="George" flex="1" id="left_FirstName"/></listcell>
+				<listcell><button class="mergebutton" label="»" disabled="false" oncommand="void()" /></listcell>
 				<listcell id="cell_right_FirstName" class="unused"><textbox value="GeeBoy" flex="1" id="right_FirstName"/></listcell>
 			</listitem>
 			<listitem>
 				<listcell class="fieldlabel" label="Last Name:"/>
 				<listcell id="cell_left_LastName"><textbox class="used" value="Hunter" flex="1" id="left_LastName"/></listcell>
+				<listcell><button class="mergebutton" label="»" disabled="false" oncommand="void()" /></listcell>
 				<listcell id="cell_right_LastName"><textbox class="unused" value="H." flex="1" id="right_LastName"/></listcell>
 			</listitem>
 			<listitem>
 				<listcell class="fieldlabel" label="Display Name:"/>
 				<listcell class="used"><textbox value="George Hunter" flex="1" id="left_DisplayName"/></listcell>
+				<listcell><button class="mergebutton" label="»" disabled="false" oncommand="void()" /></listcell>
 				<listcell class="unused"><textbox value="GeeBoy H." flex="1" id="right_DisplayName"/></listcell>
 			</listitem>
 		</listbox>
