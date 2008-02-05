@@ -2,10 +2,20 @@
 
 This page is used to track feature wishes so you don't have to mail them every time ;-)
 
-  * *Display fields with differences in other way than identical fields*
-  * *Handling duplicates accross several address books*
-  * *Ability to switch the address book after calling "Find and handle duplicates..."*
-  * *Display all contact fields in the duplicate window for adding data*
-  * *Ability to save both individual contacts in the duplicate window without merging them*
-  * *Store the information that a certain pair is not a duplicate in order to avoid presentation in future runs*
-  * *Option to save both contacts from a pair seperately, without merging, in order to allow for editing of both contacts*
+==Display fields with differences in other way than identical fields==
+In the duplicate pair dialog: In order to make differences between contacts easily visible, highlight fields with differences
+
+==Handling duplicates accross several address books==
+Most users have at least two address books, some even more. They want to be able to remove duplicates between several address books in one run.
+
+==Ability to switch the address book after calling "Find and handle duplicates..."==
+The user might not have notices that duplicate checking is applied to the currently opened address book. So instead of simply displaying the name in the start window, a dropdown list or some other selection control should be displayed.
+
+==Display all contact fields in the duplicate window for adding data==
+Some users request this, since they want to manually add data to the remaining contact. On the other hand, it is important to have a quick overview over the field that contain the important (= the differing) values. So this might be an option/button "Show all fields" / "Show only fields with values" or "Show empty fields (On/Off)".
+
+==Ability to save both individual contacts in the duplicate window without merging them==
+During the address book walkthrough, the user might recognize that both presented contacts of a pair have to be saved, but the user would like to complete/modify the data of one or both.
+
+==Store the information that a certain pair is not a duplicate in order to avoid presentation in future runs==
+If "John A" and "John B" turn out not to be the same person, the add-on might be so clever to memorize that information and save the user clicks in future runs.
