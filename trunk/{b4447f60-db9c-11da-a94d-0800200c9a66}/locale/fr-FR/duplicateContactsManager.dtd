@@ -26,9 +26,10 @@
 <!ENTITY handleDuplicates.endtext.numPresented		"Paires de contacts présentés : ">
 <!ENTITY handleDuplicates.endtext.numRemovedMan		"Contacts enlevés manuellement : ">
 <!ENTITY handleDuplicates.endtext.numSkipped		"Contacts passés : ">
+<!ENTITY handleDuplicates.endtext.helpDevelopment	"You can help us to improve this Thunderbird Add-On by filing bug reports, commenting the wishlist or even writing code. Please visit our development site:">
 <!ENTITY handleDuplicates.endtext.provideFeedback	"Pour aider à améliorer cette extension, envoyez vos commentaires par email à :">
-<!ENTITY handleDuplicates.author					"Marian Steinbach">
-<!ENTITY handleDuplicates.feedbackMail				"marian@sendung.de">
+<!ENTITY handleDuplicates.feedbackMail				"duplicate-contact-manager-for-thunderbird@googlegroups.com">
+<!ENTITY handleDuplicates.devSiteUrl				"http://code.google.com/p/duplicate-contact-manager-for-thundebird/">
 
 <!ENTITY handleDuplicates.pleasepressstart			"Appuyer sur <span class='strong'>Démarrer</span> SVP.">
 
