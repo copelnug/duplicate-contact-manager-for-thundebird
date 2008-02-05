@@ -17,5 +17,8 @@ Some users request this, since they want to manually add data to the remaining c
 ==Ability to save both individual contacts in the duplicate window without merging them==
 During the address book walkthrough, the user might recognize that both presented contacts of a pair have to be saved, but the user would like to complete/modify the data of one or both.
 
+==Ability to delete both presented contacts==
+If none of the presented contacts is required any longer, e.g. because the more complete variant has been presented before, the user wants to eleminate both.
+
 ==Store the information that a certain pair is not a duplicate in order to avoid presentation in future runs==
 If "John A" and "John B" turn out not to be the same person, the add-on might be so clever to memorize that information and save the user clicks in future runs.
