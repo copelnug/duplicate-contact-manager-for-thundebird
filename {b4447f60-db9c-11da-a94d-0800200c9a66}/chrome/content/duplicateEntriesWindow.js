@@ -400,7 +400,7 @@ var DuplicateContactsManagerDuplicateManager = {
 		document.getElementById('cancelbutton').setAttribute('label', g_DuplicateContactsManagerBundle.getString('QuitButtonLabel'));
 		
 		// show statistics
-		label = '';
+		var label = '';
 		
 		//document.getElementById('resultNumBefore').setAttribute('value', (document.getElementById('resultNumBefore').getAttribute('value') + "" + this.numCardsBefore));
 		label = document.getElementById('resultNumBefore').getAttribute('value');
@@ -517,10 +517,10 @@ var DuplicateContactsManagerDuplicateManager = {
 				labelcell.setAttribute('class', 'fieldlabel');
 				
 				// highlight values that differ
-				//if (leftField != rightField) {
+				if (leftField != rightField) {
 					cell1.setAttribute('class', 'used');
 					cell2.setAttribute('class', 'unused');
-				//}
+				}
 				
 				// create input fields, depending on field type
 				var cell1textbox;
@@ -748,8 +748,14 @@ var DuplicateContactsManagerDuplicateManager = {
 			this.sideUsed = side;
 			
 			for (var field in this.displayedFields) {
-				document.getElementById('cell_' + side + '_' + this.displayedFields[field]).setAttribute('class', 'used');
-				document.getElementById('cell_' + sideUnused + '_' + this.displayedFields[field]).setAttribute('class', 'unused');
+				var cell1 = document.getElementById('cell_' + side + '_' + this.displayedFields[field]);
+				var cell2 = document.getElementById('cell_' + sideUnused + '_' + this.displayedFields[field]);
+				if (cell1.getAttribute('class') == 'unused') {
+					cell1.setAttribute('class', 'used');
+				}
+				if (cell2.getAttribute('class') == 'used') {
+					cell2.setAttribute('class', 'unused');
+				}
 			}
 		}
 	},
