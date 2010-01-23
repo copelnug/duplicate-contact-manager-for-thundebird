@@ -10,7 +10,9 @@ In order to use the build script, you need an envionment capable of running shel
 
  * Unix / Linux
  * Mac OS X
- * Windows with Cygwin
+ * Windows with [http://www.cygwin.com/ Cygwin]
+
+Furthermore, you need to have the programs "find" and "zip" installed and available in your path. Under Cygwin, you can isntall them via the packages "findutils" and "zip".
 
 == Details ==
 
@@ -21,16 +23,3 @@ In order to build the XPI file, simply go to the directory containing the file b
 This will generate an output file named like this:
 
 *duplicate-contact-manager-YYYYMMDD-HHMM-tb.xpi*
-
-== Requirements ==
-
-Please make sure you have the commands available in your path:
-
-* find
-* zip
-
-== Tipp for developers using Windows ==
-
-You might already know this, since you also handle SVN with ease. But in case you don't: In order to run shell scripts under windows, you need a shell. You can install free, open source [http://www.cygwin.com/ Cygwin].
-
-Under cygwin, you can also install the required tools mentioned above (called "findutils" and "zip").
