@@ -8,9 +8,9 @@ Thunderbird add-ons are distributed as a single file with .XPI extension. These 
 
 In order to use the build script, you need an envionment capable of running shell scripts. This could be, for example, one of the following:
 
-* Unix / Linux
-* Mac OS X
-* Windows with Cygwin
+ * Unix / Linux
+ * Mac OS X
+ * Windows with Cygwin
 
 == Details ==
 
