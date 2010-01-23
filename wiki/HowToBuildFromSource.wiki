@@ -12,7 +12,13 @@ In order to use the build script, you need an envionment capable of running shel
  * Mac OS X
  * Windows with [http://www.cygwin.com/ Cygwin]
 
-Furthermore, you need to have the programs "find" and "zip" installed and available in your path. Under Cygwin, you can isntall them via the packages "findutils" and "zip".
+Furthermore, you need to have the following command line tools installed:
+
+ * svn
+ * find
+ * zip
+
+Under Cygwin, "find" is available in the package named "findutils", zip is simply called "zip" and "svn" might appear as a package called "subversion".
 
 == Details ==
 
