@@ -1,0 +1,52 @@
+<!-- Address Book Menu Toolbar -->
+<!ENTITY abookmenu.label							"Dubletten">
+<!ENTITY abookmenu.accesskey						"L">
+<!ENTITY abookmenu.items.handleduplicates.label		"Dubletten suchen und entfernen...">
+<!ENTITY abookmenu.items.handleduplicates.accesskey	"D">
+
+<!-- Address Book Menu Toolbar -->
+<!ENTITY abooktoolbar.label							"Dubletten Suchen">
+<!ENTITY abooktoolbar.tooltip						"Dubletten suchen und entfernen">
+
+<!-- Check and Handle Duplicates -->
+<!ENTITY handleDuplicates.windowtitle				"Dubletten suchen und entfernen">
+<!ENTITY handleDuplicates.introheader				"Was passiert hier?">
+<!ENTITY handleDuplicates.introtext					"Ihr ausgewähltes Adressbuch wird nach doppelten Kontakten durchsucht:">
+<!ENTITY handleDuplicates.introtext2				"Jedes mal, wenn eine wahrscheinliche Dublette gefunden wird, wird das Kontaktpaar angezeigt. <span class='strong'>Sie entscheiden</span>, welcher der beiden Kontakte gespeichert wird und welcher gelöscht wird. Sie können den zu speichernden Kontakt auch bearbeiten.">
+<!ENTITY handleDuplicates.introtext3				"Sie können den Prozess jederzeit abbrechen, indem Sie 'Abbrechen' drücken. Wenn Sie eine Dublette überspringen wollen, Klicken Sie 'Überspringen'.">
+<!ENTITY handleDuplicates.introtext4				"Abhängig von der Anzahl der Kontakte in Ihrem Adressbuch und der CPU Ihres Rechners kann dieser Vorgang mehrere Minuten in Anspruch nehmen.">
+
+<!-- text after process has finished -->
+<!ENTITY handleDuplicates.endheader					"Das war’s.">
+<!ENTITY handleDuplicates.endtext					"Sie haben sich von Ihren Dubletten getrennt und können Sich nun wieder angenehmeren Dingen widmen.">
+<!ENTITY handleDuplicates.endtext.numBefore			"Anzahl der Kontakte vorher: ">
+<!ENTITY handleDuplicates.endtext.numAfter			"Anzahl der Kontakte nachher: ">
+<!ENTITY handleDuplicates.endtext.numRemoved		"Entfernte Kontakte: ">
+<!ENTITY handleDuplicates.endtext.numRemovedAuto	"Automatisch entfernte Kontakte: ">
+<!ENTITY handleDuplicates.endtext.numPresented		"Als Dubletten angezeigt: ">
+<!ENTITY handleDuplicates.endtext.numRemovedMan		"Manuell entfernte Kontakte: ">
+<!ENTITY handleDuplicates.endtext.numSkipped		"Übersprungene Dubletten: ">
+<!ENTITY handleDuplicates.endtext.helpDevelopment	"Sie können helfen, dieses Thunderbird Add-On zu verbessern, indem Sie Probleme melden, unsere Wunschliste ergänzen oder sogar Code beisteuern. Besuchen Sie unsere Entwickler-Seite unter:">
+<!ENTITY handleDuplicates.endtext.provideFeedback	"oder mailen Sie Ihr Feedback direkt an unsere öffentliche Mailingliste:">
+<!ENTITY handleDuplicates.feedbackMail				"duplicate-contact-manager-for-thunderbird@googlegroups.com">
+<!ENTITY handleDuplicates.devSiteUrl				"http://code.google.com/p/duplicate-contact-manager-for-thundebird/">
+
+<!ENTITY handleDuplicates.pleasepressstart			"Bitte Klicken Sie auf <span class='strong'>Start</span>.">
+
+<!ENTITY handleDuplicates.startbutton.label			"Start">
+<!ENTITY handleDuplicates.startbutton.accesskey		"S">
+<!ENTITY handleDuplicates.applynextbutton.label		"Speichern und Weiter &#62;">
+<!ENTITY handleDuplicates.applynextbutton.accesskey	"W">
+<!ENTITY handleDuplicates.skipnextbutton.label		"Überspringen &#62;">
+<!ENTITY handleDuplicates.skipnextbutton.accesskey	"Ü">
+<!ENTITY handleDuplicates.cancelbutton.label		"Abbrechen">
+<!ENTITY handleDuplicates.firstcontact				"Erster Kontakt">
+<!ENTITY handleDuplicates.secondcontact				"Zweiter Kontakt">
+<!ENTITY handleDuplicates.will_be_kept				"wird gespeichert">
+<!ENTITY handleDuplicates.will_be_removed			"wird gelöscht">
+<!ENTITY handleDuplicates.empty						"leer">
+<!ENTITY handleDuplicates.status_default			"Suche nach Dubletten...">
+<!ENTITY handleDuplicates.status_nonefound			"Keine Dubletten gefunden">
+<!ENTITY handleDuplicates.status_nfound				"&#x25;s mögliche Dubletten gefunden">
+<!ENTITY handleDuplicates.status_of					"&#x25;s von &#x25;s">
+
