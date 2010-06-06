@@ -19,6 +19,7 @@
 		<vbox flex="1" align="left" style="padding: 20px;">
 			<description style="font-weight: bold">Duplicate Contact Manager</description>
 			<description>Thunderbird add-on by Marian Steinbach</description>
+			<description>Contributor: Alfred Peng</description>
 			<description></description>
 			<description></description>
 			<description>Add-On home page:</description>

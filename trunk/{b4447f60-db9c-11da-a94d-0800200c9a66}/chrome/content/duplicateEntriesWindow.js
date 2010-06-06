@@ -1,9 +1,10 @@
 // This file is UTF-8. Please adjust you text editor prior to saving any changes!
 
 /* Change history:
- * version 0.2
+ * version 0.2.1
  * - don't delete exact duplicates without user interaction any more
  * - use "selected address book" instead of "personal address book only"
+ * - upgrade to support Thunderbird 3.0beta
  *
  */
  
@@ -102,7 +103,7 @@ var DuplicateContactsManagerDuplicateManager = {
 	columnUseLeftRadioButton: null,
 	columnUseRightRadioButton: null,
 	
-	directory: null,
+	abDir: null,
 	
 	searchInterval: null,
 	
@@ -155,7 +156,7 @@ var DuplicateContactsManagerDuplicateManager = {
 		
 		// display address book name
 		document.getElementById('addressbookname').setAttribute('value',
-			this.abDir.directoryProperties.description
+			this.abDir.dirName
 			//+ ' ('+ this.numCardsBefore + ' ' +
 			//g_DuplicateContactsManagerBundle.getString('Contacts') + ')'
 		);
@@ -215,14 +216,14 @@ var DuplicateContactsManagerDuplicateManager = {
 		
 		// see what's been modified
 		var entryModified = false;
-		var keepCard = this.vcards[keepIndex].QueryInterface(Components.interfaces.nsIAbCard);
+		var deleteCard = this.vcards[deleteIndex].QueryInterface(Components.interfaces.nsIAbCard);
 		for (var field in updateFields) {
 			//alert(field + ': ' + updateFields[field]);
-			if (keepCard.getCardValue(field) != updateFields[field]) {
+			if (deleteCard.getProperty(field, "") != updateFields[field]) {
 				entryModified = true;
 				//alert('Changed: ' + field + ': ' + updateFields[field]);
 				try {
-					keepCard.setCardValue(field, updateFields[field]);
+					deleteCard.setProperty(field, updateFields[field]);
 				} catch (e) {
 					alert(e);
 				}
@@ -232,7 +233,7 @@ var DuplicateContactsManagerDuplicateManager = {
 			// Try to update card in database
 			try {
 				//alert("Commit update: [" + abCard.displayName + "] to " + directory.directoryProperties.URI);
-				keepCard.editCardToDatabase(this.directory.directoryProperties.URI);
+//				deleteCard.editCardToDatabase(this.directory.directoryProperties.URI);
 			} catch (ex) {
 				alert(ex);
 			}
@@ -257,10 +258,10 @@ var DuplicateContactsManagerDuplicateManager = {
 		 * 1) create nsISupportsArray containing the one card to be deleted
 		 * 2) call deleteCards ( nsISupportsArray cards )
 		 */
-		var deleteCards = Components.classes["@mozilla.org/supports-array;1"].createInstance(Components.interfaces.nsISupportsArray);
-		deleteCards.AppendElement(this.vcards[index]);
+		var deleteCards = Components.classes["@mozilla.org/array;1"].createInstance(Components.interfaces.nsIMutableArray);
+		deleteCards.appendElement(this.vcards[index], false);
 		//alert('Deleting card '+index);
-		this.directory.deleteCards(deleteCards);
+		this.abDir.deleteCards(deleteCards);
 		this.vcards[index] = false;	// set empty element, but leave element number as is
 	},
 	
@@ -291,7 +292,7 @@ var DuplicateContactsManagerDuplicateManager = {
 	 */
 	searchDuplicateIntervalAction: function() {
 		var count = 0;
-		while (!this.foundDuplicate && !this.finished && count < 10) {	// execute 10 several steps per interval
+		while (!this.foundDuplicate && !this.finished && count < 1000) {	// execute 1000 several steps per interval
 			count++;
 			
 			// DEBUGGING
@@ -459,11 +460,11 @@ var DuplicateContactsManagerDuplicateManager = {
 			if (this.vcards[i]) {
 				var card = this.vcards[i].QueryInterface(Components.interfaces.nsIAbCard);
 				var v = new Object();
-				v['PrimaryEmail'] = card.getCardValue("PrimaryEmail").toLowerCase();
-				v['SecondEmail'] = card.getCardValue("SecondEmail").toLowerCase();
-				v['DisplayName'] = this.normalizeNameString(card.getCardValue("DisplayName"));
-				v['FirstName'] = this.normalizeNameString(card.getCardValue("FirstName"));
-				v['LastName'] = this.normalizeNameString(card.getCardValue("LastName"));
+				v['PrimaryEmail'] = card.primaryEmail.toLowerCase();
+				v['SecondEmail'] = card.getProperty("SecondEmail", "");
+				v['DisplayName'] = this.normalizeNameString(card.displayName);
+				v['FirstName'] = this.normalizeNameString(card.firstName);
+				v['LastName'] = this.normalizeNameString(card.lastName);
 				this.vcardsSimplified[i] = v;
 			}
 		}
@@ -483,8 +484,8 @@ var DuplicateContactsManagerDuplicateManager = {
 		var fieldCount = 0;
 		
 		// if two different mail addresses are available, show SecondEmail field
-		var mail1 = card1.getCardValue('PrimaryEmail');
-		var mail2 = card2.getCardValue('PrimaryEmail');
+		var mail1 = card1.primaryEmail;
+		var mail2 = card2.primaryEmail;
 		var displaySecondMail = false;
 		if (mail1 && mail2) {
 			displaySecondMail = true;
@@ -492,8 +493,8 @@ var DuplicateContactsManagerDuplicateManager = {
 		
 		for (var i=0; i<g_addressBookFields.length; i++) {
 			// only display if at least one value is present
-			var leftField = card1.getCardValue(g_addressBookFields[i]);
-			var rightField = card2.getCardValue(g_addressBookFields[i]);
+			var leftField = card1.getProperty(g_addressBookFields[i], "");
+			var rightField = card2.getProperty(g_addressBookFields[i], "");
 			if (
 				(
 				(g_addressBookFields[i] != 'LastModifiedDate') && 
@@ -651,10 +652,10 @@ var DuplicateContactsManagerDuplicateManager = {
 		var v2 	= card2['FirstName'];
 		var n1 	= card1['LastName'];
 		var n2 	= card2['LastName'];
-		var vn1 = card1['FirstName'] + ' ' + card1['LastName']
-		var vn2 = card2['FirstName'] + ' ' + card2['LastName']
-		var nv1 = card1['LastName'] + ', ' + card1['FirstName']
-		var nv2 = card2['LastName'] + ', ' + card2['FirstName']
+		var vn1 = card1['FirstName'] + ' ' + card1['LastName'];
+		var vn2 = card2['FirstName'] + ' ' + card2['LastName'];
+		var nv1 = card1['LastName'] + ', ' + card1['FirstName'];
+		var nv2 = card2['LastName'] + ', ' + card2['FirstName'];
 		
 		// only one term needs to be true
 		var namesEqual = 
@@ -706,7 +707,6 @@ var DuplicateContactsManagerDuplicateManager = {
 		
 		if (!this.abDir.isMailList) {
 			//alert(abDir.dirName);
-			this.directory = this.abDir;
 			this.vcards = this.getAllAbCards(this.abDir);
 			this.numCardsBefore = this.vcards.length;
 		}
@@ -802,26 +802,18 @@ var DuplicateContactsManagerDuplicateManager = {
 			abCardsEnumerator = directory.childCards;
 			if (abCardsEnumerator) {
 				try {
-					abCardsEnumerator.first();
+					var counter = 0;
+					while (abCardsEnumerator.hasMoreElements()) {
+						var abCard = abCardsEnumerator.getNext();
+						if (abCard) {
+							abCards[counter] = abCard;
+							counter++;
+						}
+					}
 				}
 				catch (ex) {
 					// Return empty array
 					return abCards;
-				}
-				
-				while (true) {
-					var abCard = abCardsEnumerator.currentItem();
-					if (abCard) {
-						abCards[counter] = abCard;
-						counter++;
-					}
-					
-					try {
-						abCardsEnumerator.next();
-					}
-					catch (ex) {
-						break;
-					}
 				}
 			}
 		}
