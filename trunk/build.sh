@@ -1,4 +1,5 @@
-#!/usr/bin/bash
+#!/bin/bash
+##!/usr/bin/bash
 
 # current dir is "duplicate-contact-manager-for-thunderbird"
 

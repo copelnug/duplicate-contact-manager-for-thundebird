@@ -272,7 +272,6 @@ var DuplicateContactsManagerDuplicateManager = {
 	searchNextDuplicate: function() {
 		
 		this.foundDuplicate = false;
-		this.currentSearchPairPosition = -1;
 		if (this.skipPositionsToNext()) {
 			document.getElementById('startbutton').setAttribute('disabled', 'true');
 			document.getElementById('applynextbutton').setAttribute('disabled', 'true');
@@ -428,24 +427,33 @@ var DuplicateContactsManagerDuplicateManager = {
 	 * Returns false if no next pair is available
 	 */
 	skipPositionsToNext: function() {
-		this.currentSearchPairPosition++;
-		if (this.currentSearchPairPosition == this.vcards.length) {
-			this.currentSearchPairPosition = 0;
-			this.currentSearchPosition++;
-			if (this.currentSearchPosition >= this.vcards.length) {
-				// end of material.
-				//alert('end of material.');
-				return false;
+		// If the current searchPosition is deleted, force the search for a next one by
+		// setting the searchPairPosition to the end.
+		if(this.vcards[this.currentSearchPosition] == null
+			|| this.vcards[this.currentSearchPosition] == false)
+			this.currentSearchPairPosition = this.vcards.length;
+
+		// Search for the next searchPairPosition
+		do
+		{
+			++(this.currentSearchPairPosition);
+			if(this.currentSearchPairPosition >= this.vcards.length)
+			{
+				// We have reached the end, search for the next searchPosition
+				do
+				{
+					++(this.currentSearchPosition);
+					if(this.currentSearchPosition + 1 >= this.vcards.length) // Make sure it's possible to have ...,Search, SearchPair.
+						return false;
+				} while(this.vcards[this.currentSearchPosition] == null
+						|| this.vcards[this.currentSearchPosition] == false);
+
+				// We start searching the pair with the position after.
+				this.currentSearchPairPosition = this.currentSearchPosition + 1;
 			}
-		}
-		while (
-				(this.currentSearchPosition == this.currentSearchPairPosition) ||
-				this.deletedCards[this.currentSearchPosition] ||
-				this.deletedCards[this.currentSearchPairPosition] ||
-				this.duplicateCache[this.currentSearchPosition+'_'+this.currentSearchPairPosition]) {
-				// recurse!
-				this.skipPositionsToNext();
-		}
+		} while(this.vcards[this.currentSearchPairPosition] == null
+				|| this.vcards[this.currentSearchPairPosition] == false);
+
 		return true;
 	},
 	
