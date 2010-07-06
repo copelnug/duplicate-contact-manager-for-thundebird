@@ -1,0 +1,52 @@
+<!-- Address Book Menu Toolbar -->
+<!ENTITY abookmenu.label							"Duplicados">
+<!ENTITY abookmenu.accesskey						"C">
+<!ENTITY abookmenu.items.handleduplicates.label		"Encuentra y administra duplicados...">
+<!ENTITY abookmenu.items.handleduplicates.accesskey	"N">
+
+<!-- Address Book Menu Toolbar -->
+<!ENTITY abooktoolbar.label							"Encuentra duplicados">
+<!ENTITY abooktoolbar.tooltip						"Encuentra contactos duplicados en las libretas de direcciones">
+
+<!-- Check and Handle Duplicates -->
+<!ENTITY handleDuplicates.windowtitle				"Encuentra y administra contactos duplicados">
+<!ENTITY handleDuplicates.introheader				"¿Como se maneja?">
+<!ENTITY handleDuplicates.introtext					"La libreta de direcciones seleccionada será revisada para encontrar contactos duplicados:">
+<!ENTITY handleDuplicates.introtext2				"Si se encuentran contactos duplicados, se mostrarán para indicar que contacto se guarda y cual se elimina. También se podra editar la información.">
+<!ENTITY handleDuplicates.introtext3				"Se puede abandonar el proceso en cualquier momento presionando la tecla 'Cancelar'. Si no se quieren hacer cambios a un duplicado, se usa la tecla 'Saltar'.">
+<!ENTITY handleDuplicates.introtext4				"Dependiendo del número de contactos y la velocidad del CPU de la computadora, será el tiempo que se tarde,  y puede tomar varios minutos.">
+
+<!-- text after process has finished -->
+<!ENTITY handleDuplicates.endheader					"Eso es todo.">
+<!ENTITY handleDuplicates.endtext					"You just got rid of these duplicates and can now continue with something that’s even more fun.">
+<!ENTITY handleDuplicates.endtext.numBefore			"Número de contactos antes: ">
+<!ENTITY handleDuplicates.endtext.numAfter			"Número de contactos después: ">
+<!ENTITY handleDuplicates.endtext.numRemoved		"Contactos eliminados: ">
+<!ENTITY handleDuplicates.endtext.numRemovedAuto	"Contactos eliminados automáticamente: ">
+<!ENTITY handleDuplicates.endtext.numPresented		"Pares de contactos presentados: ">
+<!ENTITY handleDuplicates.endtext.numRemovedMan		"Contactos eliminados manualmente: ">
+<!ENTITY handleDuplicates.endtext.numSkipped		"Contactos saltados: ">
+<!ENTITY handleDuplicates.endtext.helpDevelopment	"Para ayudar a mejorar este extensión de Thunderbird llene un reporte de error, comente en la lista o escriba código. Visite el sitio de desarrollo:">
+<!ENTITY handleDuplicates.endtext.provideFeedback	"o envíe sus sugerencias directamente a la lista de correo pública:">
+<!ENTITY handleDuplicates.feedbackMail				"duplicate-contact-manager-for-thunderbird@googlegroups.com">
+<!ENTITY handleDuplicates.devSiteUrl				"http://code.google.com/p/duplicate-contact-manager-for-thundebird/">
+
+<!ENTITY handleDuplicates.pleasepressstart			"Por favor presione <span class='strong'>Inicio</span>.">
+
+<!ENTITY handleDuplicates.startbutton.label			"Inicio">
+<!ENTITY handleDuplicates.startbutton.accesskey		"I">
+<!ENTITY handleDuplicates.applynextbutton.label		"Aplicar y continuar &#62;">
+<!ENTITY handleDuplicates.applynextbutton.accesskey	"A">
+<!ENTITY handleDuplicates.skipnextbutton.label		"Saltar &#62;">
+<!ENTITY handleDuplicates.skipnextbutton.accesskey	"S">
+<!ENTITY handleDuplicates.cancelbutton.label		"Cancelar">
+<!ENTITY handleDuplicates.firstcontact				"Primer contacto">
+<!ENTITY handleDuplicates.secondcontact				"Segundo Contacto">
+<!ENTITY handleDuplicates.will_be_kept				"Será guardado">
+<!ENTITY handleDuplicates.will_be_removed			"Será borrado">
+<!ENTITY handleDuplicates.empty						"Vacío">
+<!ENTITY handleDuplicates.status_default			"Buscando contactos duplicados...">
+<!ENTITY handleDuplicates.status_nonefound			"No se encontraron contactos duplicados">
+<!ENTITY handleDuplicates.status_nfound				"&#x25;s contactos duplicados posibles">
+<!ENTITY handleDuplicates.status_of					"&#x25;s de &#x25;s">
+
