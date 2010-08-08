@@ -88,8 +88,6 @@ var DuplicateContactsManagerDuplicateManager = {
 	selectedAddressbookURI: null,
 	personalDir: '',
 	
-	duplicateCache: new Object(),
-	deletedCards: new Array(),
 	currentSearchPosition: 0,
 	currentSearchPairPosition: 0,
 	
@@ -251,7 +249,6 @@ var DuplicateContactsManagerDuplicateManager = {
 	 */
 	deleteAbCard: function(index) {
 		
-		this.deletedCards[index] = true;
 		this.numCardsDeleted++;
 		
 		/** delete from directory
@@ -358,10 +355,7 @@ var DuplicateContactsManagerDuplicateManager = {
 				this.foundDuplicate = true;
 				
 				//alert('found pair '+this.currentSearchPosition+'_'+this.currentSearchPairPosition);
-				
-				this.duplicateCache[this.currentSearchPosition+'_'+this.currentSearchPairPosition] = true;
-				this.duplicateCache[this.currentSearchPairPosition+'_'+this.currentSearchPosition] = true;
-				
+					
 				this.displayCardData(this.currentSearchPosition, this.currentSearchPairPosition);
 				
 				if (mailmatch) {

@@ -1,0 +1,8 @@
+Performance
+	Do not keep an array of deleted card position while processing anymore.
+	Do not keep an array of found pair position while processing anymore.
+
+TODO:
+	Eliminate use of global card1.
+	Delete getSimplifiedCard
+	Delete simplifiedCard
