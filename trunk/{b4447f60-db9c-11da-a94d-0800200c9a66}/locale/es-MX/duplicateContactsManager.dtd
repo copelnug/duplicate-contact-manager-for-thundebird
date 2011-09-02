@@ -12,7 +12,7 @@
 <!ENTITY handleDuplicates.windowtitle				"Encuentra y administra contactos duplicados">
 <!ENTITY handleDuplicates.introheader				"¿Como se maneja?">
 <!ENTITY handleDuplicates.introtext					"La libreta de direcciones seleccionada será revisada para encontrar contactos duplicados:">
-<!ENTITY handleDuplicates.introtext2				"Si se encuentran contactos duplicados, se mostrarán para indicar que contacto se guarda y cual se elimina. También se podra editar la información.">
+<!ENTITY handleDuplicates.introtext2				"Si se encuentran contactos duplicados, se mostrarán para indicar que contacto se guarda y cual se elimina.">
 <!ENTITY handleDuplicates.introtext3				"Se puede abandonar el proceso en cualquier momento presionando la tecla 'Cancelar'. Si no se quieren hacer cambios a un duplicado, se usa la tecla 'Saltar'.">
 <!ENTITY handleDuplicates.introtext4				"Dependiendo del número de contactos y la velocidad del CPU de la computadora, será el tiempo que se tarde,  y puede tomar varios minutos.">
 
@@ -31,7 +31,7 @@
 <!ENTITY handleDuplicates.feedbackMail				"duplicate-contact-manager-for-thunderbird@googlegroups.com">
 <!ENTITY handleDuplicates.devSiteUrl				"http://code.google.com/p/duplicate-contact-manager-for-thundebird/">
 
-<!ENTITY handleDuplicates.pleasepressstart			"Por favor presione <span class='strong'>Inicio</span>.">
+<!ENTITY handleDuplicates.pleasepressstart			"Por favor presione Inicio.">
 
 <!ENTITY handleDuplicates.startbutton.label			"Inicio">
 <!ENTITY handleDuplicates.startbutton.accesskey		"I">

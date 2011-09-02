@@ -12,7 +12,7 @@
 <!ENTITY handleDuplicates.windowtitle				"Find and Handle Duplicates">
 <!ENTITY handleDuplicates.introheader				"What’s happening here?">
 <!ENTITY handleDuplicates.introtext					"Your selected address book will now be searched for entries that seem to be duplicates:">
-<!ENTITY handleDuplicates.introtext2				"Each time a pair of duplicate contacts is found, it will be presented to you. <span class='strong'>You decide</span> which contact to save and which one to delete. You can also edit the data of the contact to be kept.">
+<!ENTITY handleDuplicates.introtext2				"Each time a pair of duplicate contacts is found, it will be presented to you. You decide which contact to save and which one to delete.">
 <!ENTITY handleDuplicates.introtext3				"You can abort the process any time by pressing 'Cancel'. If you don’t want to treat a duplicate, use 'Skip'.">
 <!ENTITY handleDuplicates.introtext4				"Depending on the number of adresses and the CPU of your computer, this process might take several minutes.">
 
@@ -31,7 +31,7 @@
 <!ENTITY handleDuplicates.feedbackMail				"duplicate-contact-manager-for-thunderbird@googlegroups.com">
 <!ENTITY handleDuplicates.devSiteUrl				"http://code.google.com/p/duplicate-contact-manager-for-thundebird/">
 
-<!ENTITY handleDuplicates.pleasepressstart			"Please press <span class='strong'>Start</span>.">
+<!ENTITY handleDuplicates.pleasepressstart			"Please press Start.">
 
 <!ENTITY handleDuplicates.startbutton.label			"Start">
 <!ENTITY handleDuplicates.startbutton.accesskey		"S">
