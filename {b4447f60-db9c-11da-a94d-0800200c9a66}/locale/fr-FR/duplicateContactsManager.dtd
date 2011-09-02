@@ -12,7 +12,7 @@
 <!ENTITY handleDuplicates.windowtitle				"Recherche et traitement des doublons du Carnet d'Adresses">
 <!ENTITY handleDuplicates.introheader				"Comment ça marche ?">
 <!ENTITY handleDuplicates.introtext					"Les entrées qui semblent être en double vont maintenant être recherchées dans le carnet d'adresses sélectionné ci-dessous :">
-<!ENTITY handleDuplicates.introtext2				"À chaque fois qu'une paire de contacts en double est trouvée, elle vous sera proposée. <span class='strong'>C'est vous qui décidez</span> de celui que vous gardez et de celui que vous supprimez. Vous pouvez également éditer les données du contact que vous gardez.">
+<!ENTITY handleDuplicates.introtext2				"À chaque fois qu'une paire de contacts en double est trouvée, elle vous sera proposée. C'est vous qui décidez de celui que vous gardez et de celui que vous supprimez. ">
 <!ENTITY handleDuplicates.introtext3				"Vous pouvez tout arrêter à n'importe quel moment en pressant sur 'Annuler'. Si vous ne voulez pas traiter un doublon, utilisez le bouton 'Passer'.">
 <!ENTITY handleDuplicates.introtext4				"En fonction du nombre d'adresses et du CPU de votre ordinateur, ce processus peut prendre plusieurs minutes.">
 
@@ -31,7 +31,7 @@
 <!ENTITY handleDuplicates.feedbackMail				"duplicate-contact-manager-for-thunderbird@googlegroups.com">
 <!ENTITY handleDuplicates.devSiteUrl				"http://code.google.com/p/duplicate-contact-manager-for-thundebird/">
 
-<!ENTITY handleDuplicates.pleasepressstart			"Appuyer sur <span class='strong'>Démarrer</span> SVP.">
+<!ENTITY handleDuplicates.pleasepressstart			"Appuyer sur Démarrer SVP.">
 
 <!ENTITY handleDuplicates.startbutton.label			"Démarrer">
 <!ENTITY handleDuplicates.startbutton.accesskey		"D">

@@ -12,7 +12,7 @@
 <!ENTITY handleDuplicates.windowtitle				"Dubletten suchen und entfernen">
 <!ENTITY handleDuplicates.introheader				"Was passiert hier?">
 <!ENTITY handleDuplicates.introtext					"Ihr ausgewähltes Adressbuch wird nach doppelten Kontakten durchsucht:">
-<!ENTITY handleDuplicates.introtext2				"Jedes mal, wenn eine wahrscheinliche Dublette gefunden wird, wird das Kontaktpaar angezeigt. <span class='strong'>Sie entscheiden</span>, welcher der beiden Kontakte gespeichert wird und welcher gelöscht wird. Sie können den zu speichernden Kontakt auch bearbeiten.">
+<!ENTITY handleDuplicates.introtext2				"Jedes mal, wenn eine wahrscheinliche Dublette gefunden wird, wird das Kontaktpaar angezeigt. Sie entscheiden, welcher der beiden Kontakte gespeichert wird und welcher gelöscht wird.">
 <!ENTITY handleDuplicates.introtext3				"Sie können den Prozess jederzeit abbrechen, indem Sie 'Abbrechen' drücken. Wenn Sie eine Dublette überspringen wollen, Klicken Sie 'Überspringen'.">
 <!ENTITY handleDuplicates.introtext4				"Abhängig von der Anzahl der Kontakte in Ihrem Adressbuch und der CPU Ihres Rechners kann dieser Vorgang mehrere Minuten in Anspruch nehmen.">
 
@@ -31,7 +31,7 @@
 <!ENTITY handleDuplicates.feedbackMail				"duplicate-contact-manager-for-thunderbird@googlegroups.com">
 <!ENTITY handleDuplicates.devSiteUrl				"http://code.google.com/p/duplicate-contact-manager-for-thundebird/">
 
-<!ENTITY handleDuplicates.pleasepressstart			"Bitte Klicken Sie auf <span class='strong'>Start</span>.">
+<!ENTITY handleDuplicates.pleasepressstart			"Bitte Klicken Sie auf Start.">
 
 <!ENTITY handleDuplicates.startbutton.label			"Start">
 <!ENTITY handleDuplicates.startbutton.accesskey		"S">
