@@ -15,6 +15,7 @@
 <!ENTITY handleDuplicates.introtext2				"À chaque fois qu'une paire de contacts en double est trouvée, elle vous sera proposée. C'est vous qui décidez de celui que vous gardez et de celui que vous supprimez. ">
 <!ENTITY handleDuplicates.introtext3				"Vous pouvez tout arrêter à n'importe quel moment en pressant sur 'Annuler'. Si vous ne voulez pas traiter un doublon, utilisez le bouton 'Passer'.">
 <!ENTITY handleDuplicates.introtext4				"En fonction du nombre d'adresses et du CPU de votre ordinateur, ce processus peut prendre plusieurs minutes.">
+<!ENTITY handleDuplicates.removeWithoutAsking		"Automatiquement supprimer un des contacts lorsqu’ils sont totalement identiques.">
 
 <!-- text after process has finished -->
 <!ENTITY handleDuplicates.endheader					"C'est bon.">

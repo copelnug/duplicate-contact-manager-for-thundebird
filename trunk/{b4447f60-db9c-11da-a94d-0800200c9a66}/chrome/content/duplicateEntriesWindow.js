@@ -1,10 +1,10 @@
 // This file is UTF-8. Please adjust you text editor prior to saving any changes!
 
 /* Change history:
- * version 0.2.1
- * - don't delete exact duplicates without user interaction any more
- * - use "selected address book" instead of "personal address book only"
- * - upgrade to support Thunderbird 3.0beta
+ * version 0.8
+ * - Offer to delete exact duplicates without asking
+ * - Correctly search for exact duplicates
+ * - upgrade to support Thunderbird 7
  *
  */
 
@@ -110,6 +110,7 @@ if(typeof(DuplicateContactsManager_Running) == "undefined") {
 	
 			numCardsBefore: 0,
 			numCardsDeleted: 0,
+			deleteExactDuplicates: false,
 	
 	
 			/**
@@ -128,20 +129,13 @@ if(typeof(DuplicateContactsManager_Running) == "undefined") {
 				this.columnUseRightRadioButton = document.getElementById('columnUseRight');
 		
 				this.purgeAttributesList();
-		
-				//this.addressbook = Components.classes["@mozilla.org/addressbook;1"].createInstance(Components.interfaces.nsIAddressBook);
-		
+			
 				// We will process the selected address book
 				var selectedUri = window.opener.GetSelectedDirectory();
 				var matches = selectedUri.match(/(moz-abmdbdirectory:\/\/[^\/]+\.mab).*/);
 				this.selectedAddressbookURI = matches[1];
 		
-				//if (this.selectedAddressbookURI != selectedUri) {
-				//	// extracted URI is different from selected directory uri.
-				//	alert(DuplicateContactsManager_Running.g_DuplicateContactsManagerBundle.getString('CorrectAddressBookSelectedPrompt'));
-				//}
 				this.readAddressBook();
-				//this.searchDuplicates();
 		
 				if (this.numCardsBefore >= 1000) {
 					alert(DuplicateContactsManager_Running.g_DuplicateContactsManagerBundle.getString('AlertMoreThan1000Contacts'));
@@ -150,14 +144,11 @@ if(typeof(DuplicateContactsManager_Running) == "undefined") {
 				// display address book name
 				document.getElementById('addressbookname').setAttribute('value',
 					this.abDir.dirName
-					//+ ' ('+ this.numCardsBefore + ' ' +
-					//DuplicateContactsManager_Running.g_DuplicateContactsManagerBundle.getString('Contacts') + ')'
 				);
 		
 				this.statustext.setAttribute('value', DuplicateContactsManager_Running.g_DuplicateContactsManagerBundle.getString('PleasePressStart'));
 		
 				document.getElementById('startbutton').focus();
-		
 			},
 	
 			/**
@@ -165,7 +156,6 @@ if(typeof(DuplicateContactsManager_Running) == "undefined") {
 			 * once the according window is closed
 			 */
 			OnUnloadWindow: function() {
-				//alert('UnloadWindow');
 				this.running = false;
 				this.vcards = null;
 			},
@@ -176,6 +166,7 @@ if(typeof(DuplicateContactsManager_Running) == "undefined") {
 			},
 	
 			startSearch: function() {
+				this.deleteExactDuplicates = document.getElementById("autoremove").hasAttribute("checked");
 				// show progress bar
 				document.getElementById('duplicateProgressMeter').setAttribute('style', 'visibility: visible');
 				// hide intro info
@@ -270,7 +261,7 @@ if(typeof(DuplicateContactsManager_Running) == "undefined") {
 					document.getElementById('skipnextbutton').setAttribute('disabled', 'true');
 					this.statustext.setAttribute('value', DuplicateContactsManager_Running.g_DuplicateContactsManagerBundle.getString('SearchingForDuplicates'));
 					this.window.setAttribute('wait-cursor', 'true');
-					this.searchInterval = window.setInterval(function() {DuplicateContactsManager_Running.DuplicateContactsManagerDuplicateManager.searchDuplicateIntervalAction();}, 0);
+					this.searchDuplicateIntervalAction()
 				}
 				else {
 					this.endSearch();
@@ -282,9 +273,7 @@ if(typeof(DuplicateContactsManager_Running) == "undefined") {
 			 * performs the actual search action. Should not be called directly, but by searchNextDuplicate().
 			 */
 			searchDuplicateIntervalAction: function() {
-				var count = 0;
-				while (!this.foundDuplicate && !this.finished && count < 1000) {	// execute 1000 several steps per interval
-					count++;
+				while (!this.foundDuplicate && !this.finished) {
 			
 					// DEBUGGING
 					this.progresstext.setAttribute('value', this.currentSearchPosition);
@@ -307,12 +296,10 @@ if(typeof(DuplicateContactsManager_Running) == "undefined") {
 					}
 			
 					// update status every now and then
-					if (1) {
-						var percentage = ((this.currentSearchPosition/this.vcards.length) * 100) + '%';
-						this.progressmeter.setAttribute('value', percentage);
-						//this.progresstext.setAttribute('value', (this.currentSearchPosition+1) + ' '+DuplicateContactsManager_Running.g_DuplicateContactsManagerBundle.getString('of')+' ' + this.vcards.length);
-						//this.statustext.setAttribute('value', (this.currentSearchPosition) + ':' + (this.currentSearchPairPosition));
-					}
+					var percentage = ((this.currentSearchPosition/this.vcards.length) * 100) + '%';
+					this.progressmeter.setAttribute('value', percentage);
+					//this.progresstext.setAttribute('value', (this.currentSearchPosition+1) + ' '+DuplicateContactsManager_Running.g_DuplicateContactsManagerBundle.getString('of')+' ' + this.vcards.length);
+					//this.statustext.setAttribute('value', (this.currentSearchPosition) + ':' + (this.currentSearchPairPosition));
 			
 					/**
 					 * 2do: More advanced mechanics can be used to verify if two mail addresses mean
@@ -324,24 +311,20 @@ if(typeof(DuplicateContactsManager_Running) == "undefined") {
 					var mailmatch = false;
 					var namesmatch = false;
 			
-					cardsmatch = this.abCardsEqual(this.card1, card2);
-					if (!cardsmatch) {
-						mailmatch = this.mailAdressesMatch(this.card1, card2);
-						if (!mailmatch) {
-							namesmatch = this.namesMatch(this.card1, card2);
-						}
-					}
+					mailmatch = this.mailAdressesMatch(this.card1, card2);
+					namesmatch = this.namesMatch(this.card1, card2);
+					
+					if(mailmatch && namesmatch)
+						cardsmatch = this.abCardsEqual(this.vcards[this.currentSearchPosition], this.vcards[this.currentSearchPairPosition]);
 			
-					/*
-					if (cardsmatch) {
+					
+					if (cardsmatch && this.deleteExactDuplicates) {
 						this.deleteAbCard(this.currentSearchPairPosition);
 						if (!this.skipPositionsToNext()) {
 							this.endSearch();
 						}
 					}
 					else if (mailmatch || namesmatch) {
-					*/
-					if (cardsmatch || mailmatch || namesmatch) {
 						// OK, we found something that looks like a duplicate. End loop here.
 				
 						// end loop
@@ -666,44 +649,14 @@ if(typeof(DuplicateContactsManager_Running) == "undefined") {
 				)
 		
 				return namesEqual;
-		
-				/*
-				var match1 = new RegExp('/\b' + disp1 +'\b/');
-				var match2 = new RegExp('/\b' + disp2 +'\b/');
-		
-				if (
-					// DisplayNames match
-					(disp1 && disp2 && (disp1 == disp2)) ||
-			
-					// Firstname and LastName match
-					((first1 && first2 && (first1 == first2)) && (last1 && last2 && (last1 == last2))) || 
-					((first2 && (first2 == first1)) && (last2 && (last2 == last1))) ||
-			
-					// Firstname + LastName match DisplayName
-					(first1 && first2 && last1 && last2 && (first1+' '+last1 == first2+' '+last2)) || 
-					(first1+' '+last1 == disp2) || 
-					(first2+' '+last2 == disp1) ||
-			
-					// DisplayName A matches word of DisplayName B (e.g. 'peter' or 'fonda' and 'peter fonda')
-					disp1.match(match2) ||
-					disp2.match(match1)
-			
-				) {
-					return true;
-				}
-				else 
-					return false;
-				*/
 			},
 	
 			readAddressBook: function() {
 		
-				// Get RDF service to read address book registry
-				this.abRdf = Components.classes["@mozilla.org/rdf/rdf-service;1"].getService(Components.interfaces.nsIRDFService);
-				this.abDir = this.abRdf.GetResource(this.selectedAddressbookURI).QueryInterface(Components.interfaces.nsIAbDirectory);
-		
+				var abManager = Components.classes["@mozilla.org/abmanager;1"].getService(Components.interfaces.nsIAbManager);
+				this.abDir = abManager.getDirectory(this.selectedAddressbookURI);
+				
 				if (!this.abDir.isMailList) {
-					//alert(abDir.dirName);
 					this.vcards = this.getAllAbCards(this.abDir);
 					this.numCardsBefore = this.vcards.length;
 				}
@@ -827,21 +780,31 @@ if(typeof(DuplicateContactsManager_Running) == "undefined") {
 			 * @return	Boolean		true if cards are identical, false otherwise
 			 */
 			abCardsEqual: function(c1, c2) {
-				var f = 0;
-				while (f < DuplicateContactsManager_Running.g_addressBookFields.length) {
-					if (DuplicateContactsManager_Running.g_addressBookFields[f] != 'LastModifiedDate') {
-						if (c1[DuplicateContactsManager_Running.g_addressBookFields[f]] && !c2[DuplicateContactsManager_Running.g_addressBookFields[f]]) {
+				var it = c1.properties;
+				while(it.hasMoreElements()){
+					var property = it.getNext().QueryInterface(Components.interfaces.nsIProperty).name;
+					
+					if(property != "RecordKey" && property != "DbRowID" && property != "LastModifiedDate") {
+						var value1 = c1.getProperty(property,null);
+						var value2 = c2.getProperty(property, null);
+						if(!(value1 == value2))
 							return false;
-						}
-						else if (!c1[DuplicateContactsManager_Running.g_addressBookFields[f]] && c2[DuplicateContactsManager_Running.g_addressBookFields[f]]) {
-							return false;
-						}
-						else if (c1[DuplicateContactsManager_Running.g_addressBookFields[f]] && c2[DuplicateContactsManager_Running.g_addressBookFields[f]] && (c1[DuplicateContactsManager_Running.g_addressBookFields[f]] != c2[DuplicateContactsManager_Running.g_addressBookFields[f]])) {
-							return false;
-						}
 					}
-					f++;
 				}
+				
+				it = c2.properties;
+				while(it.hasMoreElements()){
+					var property = it.getNext().QueryInterface(Components.interfaces.nsIProperty).name;
+					
+					if(property != "RecordKey" && property != "DbRowID" && property != "LastModifiedDate") {
+						var value1 = c1.getProperty(property,null);
+						var value2 = c2.getProperty(property, null);
+						if(!(value1 == value2))
+							return false;
+					}
+				}
+						
+				
 				return true;
 			},
 	

@@ -27,6 +27,7 @@
 			<description>&handleDuplicates.introtext3;</description>
 			<description>&handleDuplicates.introtext4;</description>
 			<description>&handleDuplicates.pleasepressstart;</description>
+			<checkbox id="autoremove" label="&handleDuplicates.removeWithoutAsking;"/>
 		</vbox>
 	</hbox>
 	<hbox flex="1" id="listboxpane" style="display: none;">

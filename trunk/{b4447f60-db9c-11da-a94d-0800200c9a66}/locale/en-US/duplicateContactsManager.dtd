@@ -15,6 +15,7 @@
 <!ENTITY handleDuplicates.introtext2				"Each time a pair of duplicate contacts is found, it will be presented to you. You decide which contact to save and which one to delete.">
 <!ENTITY handleDuplicates.introtext3				"You can abort the process any time by pressing 'Cancel'. If you don’t want to treat a duplicate, use 'Skip'.">
 <!ENTITY handleDuplicates.introtext4				"Depending on the number of adresses and the CPU of your computer, this process might take several minutes.">
+<!ENTITY handleDuplicates.removeWithoutAsking		"Remove without asking one of the contacts when an exact duplicate is found.">
 
 <!-- text after process has finished -->
 <!ENTITY handleDuplicates.endheader					"That’s it.">
