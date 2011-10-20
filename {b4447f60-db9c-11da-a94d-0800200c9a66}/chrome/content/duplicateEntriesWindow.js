@@ -200,7 +200,7 @@ if(typeof(DuplicateContactsManager_Running) == "undefined") {
 		
 				// see what's been modified
 				var entryModified = false;
-				var deleteCard = this.vcards[deleteIndex].QueryInterface(Components.interfaces.nsIAbCard);
+				var deleteCard = this.vcards[deleteIndex];
 				for (var field in updateFields) {
 					//alert(field + ': ' + updateFields[field]);
 					if (deleteCard.getProperty(field, "") != updateFields[field]) {
@@ -243,9 +243,8 @@ if(typeof(DuplicateContactsManager_Running) == "undefined") {
 				 */
 				var deleteCards = Components.classes["@mozilla.org/array;1"].createInstance(Components.interfaces.nsIMutableArray);
 				deleteCards.appendElement(this.vcards[index], false);
-				//alert('Deleting card '+index);
 				this.abDir.deleteCards(deleteCards);
-				this.vcards[index] = false;	// set empty element, but leave element number as is
+				this.vcards[index] = null;	// set empty element, but leave element number as is
 			},
 	
 			/**
