@@ -37,13 +37,13 @@
 				<listheader id="fieldLabels" flex="0" class="fieldlabel" />
 				<listheader id="columnHeaderLeft" flex="1" class="used" oncommand="DuplicateContactsManager_Running.DuplicateContactsManagerDuplicateManager.toggleContactLeftRight('left')">
 					<vbox>
-						<box style="padding: 4px 0px 0px 0px;"><radiogroup id="lcg"><radio id="columnUseLeft" label="&handleDuplicates.firstcontact;" selected="true" oncommand="DuplicateContactsManager_Running.DuplicateContactsManagerDuplicateManager.toggleContactLeftRight('left')" /></radiogroup></box>
+						<box style="padding: 4px 0px 0px 0px;"><radio id="columnUseLeft" label="&handleDuplicates.firstcontact;" selected="true" oncommand="DuplicateContactsManager_Running.DuplicateContactsManagerDuplicateManager.toggleContactLeftRight('left')" group="chooseKeeper"/></box>
 						<box style="padding: 0px 0px 6px 20px;"><label id="columnKeptInfoLeft" value="&handleDuplicates.will_be_kept;" /></box>
 					</vbox>
 				</listheader>
 				<listheader id="columnHeaderRight" flex="1" class="unused" oncommand="DuplicateContactsManager_Running.DuplicateContactsManagerDuplicateManager.toggleContactLeftRight('right')">
 					<vbox>
-						<box style="padding: 4px 0px 0px 0px;"><radiogroup id="rcg"><radio id="columnUseRight" label="&handleDuplicates.secondcontact;" selected="false" oncommand="DuplicateContactsManager_Running.DuplicateContactsManagerDuplicateManager.toggleContactLeftRight('right')" /></radiogroup></box>
+						<box style="padding: 4px 0px 0px 0px;"><radio id="columnUseRight" label="&handleDuplicates.secondcontact;" selected="false" oncommand="DuplicateContactsManager_Running.DuplicateContactsManagerDuplicateManager.toggleContactLeftRight('right')" group="chooseKeeper"/></box>
 						<box style="padding: 0px 0px 6px 20px;"><label id="columnKeptInfoRight" value="&handleDuplicates.will_be_removed;" /></box>
 					</vbox>
 				</listheader>

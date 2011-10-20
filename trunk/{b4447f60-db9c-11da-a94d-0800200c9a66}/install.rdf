@@ -6,7 +6,7 @@
 	<Description about="urn:mozilla:install-manifest">
 		<em:name>Duplicate Contact Manager</em:name>
 		<em:id>{b4447f60-db9c-11da-a94d-0800200c9a66}</em:id>
-		<em:version>0.8</em:version>
+		<em:version>0.8.1</em:version>
 		<em:description>Facilitates handling of duplicate contacts in your address books.</em:description>
 		<em:creator>Marian Steinbach</em:creator>
 		<em:contributor>Alfred Peng</em:contributor>
@@ -22,7 +22,7 @@
 		<Description>
 			<em:id>{3550f703-e582-4d05-9a08-453d09bdfdc6}</em:id>
 			<em:minVersion>3.0</em:minVersion>
-			<em:maxVersion>7.*</em:maxVersion>
+			<em:maxVersion>8.*</em:maxVersion>
 		</Description>
 		</em:targetApplication>
 	</Description>
