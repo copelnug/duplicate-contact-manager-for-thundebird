@@ -15,6 +15,7 @@
 <!ENTITY handleDuplicates.introtext2				"Si se encuentran contactos duplicados, se mostrarán para indicar que contacto se guarda y cual se elimina.">
 <!ENTITY handleDuplicates.introtext3				"Se puede abandonar el proceso en cualquier momento presionando la tecla 'Cancelar'. Si no se quieren hacer cambios a un duplicado, se usa la tecla 'Saltar'.">
 <!ENTITY handleDuplicates.introtext4				"Dependiendo del número de contactos y la velocidad del CPU de la computadora, será el tiempo que se tarde,  y puede tomar varios minutos.">
+<!ENTITY handleDuplicates.removeWithoutAsking		"Eliminar un contacto idénticos sin pedir permiso.">
 
 <!-- text after process has finished -->
 <!ENTITY handleDuplicates.endheader					"Eso es todo.">

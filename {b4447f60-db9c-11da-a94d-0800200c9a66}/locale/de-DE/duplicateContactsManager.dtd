@@ -15,6 +15,7 @@
 <!ENTITY handleDuplicates.introtext2				"Jedes mal, wenn eine wahrscheinliche Dublette gefunden wird, wird das Kontaktpaar angezeigt. Sie entscheiden, welcher der beiden Kontakte gespeichert wird und welcher gelöscht wird.">
 <!ENTITY handleDuplicates.introtext3				"Sie können den Prozess jederzeit abbrechen, indem Sie 'Abbrechen' drücken. Wenn Sie eine Dublette überspringen wollen, Klicken Sie 'Überspringen'.">
 <!ENTITY handleDuplicates.introtext4				"Abhängig von der Anzahl der Kontakte in Ihrem Adressbuch und der CPU Ihres Rechners kann dieser Vorgang mehrere Minuten in Anspruch nehmen.">
+<!ENTITY handleDuplicates.removeWithoutAsking		"Lösche identische Kontakte ohne Nachfrage.">
 
 <!-- text after process has finished -->
 <!ENTITY handleDuplicates.endheader					"Das war’s.">
