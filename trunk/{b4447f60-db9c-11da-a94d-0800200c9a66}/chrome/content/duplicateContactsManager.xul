@@ -2,7 +2,7 @@
 <!DOCTYPE overlay SYSTEM "chrome://duplicatecontactsmanager/locale/duplicateContactsManager.dtd">
 <?xml-stylesheet type="text/css" href="chrome://duplicatecontactsmanager/skin/duplicateContactsManager.css"?>
 
-<overlay id="custombutton-overlay"
+<overlay id="duplicateContactsManager.overlay.menuitem"
 	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" onload="init();">
 
 	<!--<script type="application/x-javascript" src="chrome://duplicatecontactsmanager/content/windowsregistry.js"/>-->
@@ -11,16 +11,15 @@
 	
 	<command id="cmd_handle_duplicates" disabled="false"/>
 	
-	<menubar id="mail-menubar">
-		<menu id="duplicateContactsManagerMenu" insertafter="tasksMenu" label="&abookmenu.label;" accesskey="&abookmenu.accesskey;">
-			<menupopup id="duplicateContactsManagerMenu_Popup">
-				<menuitem id="duplicateContactsManagerMenu_manageDuplicates"
-					label="&abookmenu.items.handleduplicates.label;"
-					oncommand="DuplicateContactsManager.manageDuplicates();"
-					accesskey="&abookmenu.items.handleduplicates.accesskey;" />
-			</menupopup>
-		</menu>
-    </menubar>
+	<menu id="tasksMenu">
+		<menupopup id="taskPopup">
+			<menuseparator />  
+			<menuitem id="duplicateContactsManagerMenu_manageDuplicates"
+				label="&abookmenu.items.handleduplicates.label;"
+				oncommand="DuplicateContactsManager.manageDuplicates();"
+				accesskey="&abookmenu.items.handleduplicates.accesskey;" />
+		</menupopup>
+	</menu>
 	
 	<!-- Thunderbird address book -->
 	<toolbarpalette id="AddressBookToolbarPalette">
