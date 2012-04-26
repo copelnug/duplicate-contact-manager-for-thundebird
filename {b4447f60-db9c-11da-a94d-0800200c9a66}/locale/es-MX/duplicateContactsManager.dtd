@@ -12,10 +12,12 @@
 <!ENTITY handleDuplicates.windowtitle				"Encuentra y administra contactos duplicados">
 <!ENTITY handleDuplicates.introheader				"¿Como se maneja?">
 <!ENTITY handleDuplicates.introtext					"La libreta de direcciones seleccionada será revisada para encontrar contactos duplicados:">
+<!--TODO--><!ENTITY handleDuplicates.chooseSecondary		"If you choose two different address books, duplicates will be handled across the two selected address books, otherwise within the same address book.">
 <!ENTITY handleDuplicates.introtext2				"Si se encuentran contactos duplicados, se mostrarán para indicar que contacto se guarda y cual se elimina.">
 <!ENTITY handleDuplicates.introtext3				"Se puede abandonar el proceso en cualquier momento presionando la tecla 'Cancelar'. Si no se quieren hacer cambios a un duplicado, se usa la tecla 'Saltar'.">
 <!ENTITY handleDuplicates.introtext4				"Dependiendo del número de contactos y la velocidad del CPU de la computadora, será el tiempo que se tarde,  y puede tomar varios minutos.">
 <!ENTITY handleDuplicates.removeWithoutAsking		"Eliminar un contacto idénticos sin pedir permiso.">
+<!--TODO--><!ENTITY handleDuplicates.deferHandling		"First collect all potential duplicates requiring manual treatment and then present them interactively.">
 
 <!-- text after process has finished -->
 <!ENTITY handleDuplicates.endheader					"Eso es todo.">
@@ -27,6 +29,7 @@
 <!ENTITY handleDuplicates.endtext.numPresented		"Pares de contactos presentados: ">
 <!ENTITY handleDuplicates.endtext.numRemovedMan		"Contactos eliminados manualmente: ">
 <!ENTITY handleDuplicates.endtext.numSkipped		"Contactos saltados: ">
+<!--TODO--><!ENTITY handleDuplicates.endtext.numChanged		"Entries changed">
 <!ENTITY handleDuplicates.endtext.helpDevelopment	"Para ayudar a mejorar este extensión de Thunderbird llene un reporte de error, comente en la lista o escriba código. Visite el sitio de desarrollo:">
 <!ENTITY handleDuplicates.endtext.provideFeedback	"o envíe sus sugerencias directamente a la lista de correo pública:">
 <!ENTITY handleDuplicates.feedbackMail				"duplicate-contact-manager-for-thunderbird@googlegroups.com">
@@ -40,7 +43,8 @@
 <!ENTITY handleDuplicates.applynextbutton.accesskey	"A">
 <!ENTITY handleDuplicates.skipnextbutton.label		"Saltar &#62;">
 <!ENTITY handleDuplicates.skipnextbutton.accesskey	"S">
-<!ENTITY handleDuplicates.cancelbutton.label		"Cancelar">
+<!ENTITY handleDuplicates.stopbutton.label	"Cancelar">
+<!ENTITY handleDuplicates.quitbutton.label		"Salir">
 <!ENTITY handleDuplicates.firstcontact				"Primer contacto">
 <!ENTITY handleDuplicates.secondcontact				"Segundo Contacto">
 <!ENTITY handleDuplicates.will_be_kept				"Será guardado">

@@ -6,12 +6,13 @@
 	<Description about="urn:mozilla:install-manifest">
 		<em:name>Duplicate Contact Manager</em:name>
 		<em:id>{b4447f60-db9c-11da-a94d-0800200c9a66}</em:id>
-		<em:version>0.8.2</em:version>
+		<em:version>0.9</em:version>
 		<em:description>Facilitates handling of duplicate contacts in your address books.</em:description>
 		<em:creator>Marian Steinbach</em:creator>
 		<em:contributor>Alfred Peng</em:contributor>
 		<em:contributor>Valeryan_24@laposte.net</em:contributor>
 		<em:contributor>François Godin</em:contributor>
+		<em:contributor>David von Oheimb</em:contributor>
 		<em:homepageURL>https://addons.mozilla.org/thunderbird/addon/2505</em:homepageURL>
 		<em:iconURL>chrome://duplicatecontactsmanager/content/kate.png</em:iconURL>
 		<em:aboutURL>chrome://duplicatecontactsmanager/content/aboutDialog.xul</em:aboutURL>
@@ -22,7 +23,7 @@
 		<Description>
 			<em:id>{3550f703-e582-4d05-9a08-453d09bdfdc6}</em:id>
 			<em:minVersion>3.0</em:minVersion>
-			<em:maxVersion>10.*</em:maxVersion>
+			<em:maxVersion>12.*</em:maxVersion>
 		</Description>
 		</em:targetApplication>
 	</Description>

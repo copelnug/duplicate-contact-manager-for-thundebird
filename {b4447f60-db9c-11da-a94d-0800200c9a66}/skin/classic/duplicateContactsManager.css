@@ -28,26 +28,41 @@ description.text-line {
 	line-height: 1em;
 }
 
-#handleDuplicatesListbox listheader radio {
-	font-weight: bold;
+description.value {
+	margin-left: 0px;
+	padding-left: 0px;
 }
 
-#handleDuplicatesListbox {
-	height: 400px;
-	width: auto;
+#handleDuplicates-window, #AttributesTable {
+	width: 800px;
+	height: 600px;
+}
+#AttributesTable {
+	height: 500px;
 	border: 1px inset;
 }
 
-#handleDuplicatesListbox listcell {
+radio#columnUseLeft, radio#columnUseRight {
+		padding: 4px 0px 0px 0px;
+		font-weight: bold;
+/*		background-color: #cccc00 !important; does not work - why? */
+}
+
+label#columnKeptInfoLeft, label#columnKeptInfoRight {
+		padding: 0px 0px 6px 10px;
+}
+
+#AttributesTableRows row label, #AttributesTableRows row hbox {
 	padding: 0px;
 }
 
-#handleDuplicatesListbox listcell.empty {
+/*unused*/
+row label.empty, row hbox.empty {
 	color: #ccc;
 	font-style: italic;
 }
 
-#handleDuplicatesListbox tableheader {
+AttributesTable tableheader {
 	font-weight: bold;
 	padding: 4px;
 	margin: 1px;
@@ -60,16 +75,16 @@ description.text-line {
 	text-align: center;
 }
 
-#handleDuplicatesListbox .used {
+.used {
 	background-color: #D3FFD3;
 }
-#handleDuplicatesListbox .unused {
+.unused {
 	background-color: #FFBFBF;
 }
 #explanation {
 	font-size: 12px;
 	margin: 20px;
-	height: 400px;
+	height: 500px;
 	width: auto;
 	text-align: center;
 }
@@ -94,11 +109,18 @@ description {
 	font-style: italic;
 }
 
-#handleDuplicatesListbox .fieldlabel {
+#AttributesTableRows row label.field {
 	padding: 3px;
 }
 
-#addressbookname {
-	font-weight: bold;
+hbox.addressbooklists .addressbookname {
 	margin-left: 3em;
+}
+.addressbookname {
+	text-align: left;
+	font-weight: bold;
+}
+
+checkbox {
+	text-align: left;
 }

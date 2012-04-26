@@ -12,21 +12,24 @@
 <!ENTITY handleDuplicates.windowtitle				"Recherche et traitement des doublons du Carnet d'Adresses">
 <!ENTITY handleDuplicates.introheader				"Comment ça marche ?">
 <!ENTITY handleDuplicates.introtext					"Les entrées qui semblent être en double vont maintenant être recherchées dans le carnet d'adresses sélectionné ci-dessous :">
+<!ENTITY handleDuplicates.chooseSecondary			"Les contacts du premier carnet d’adresse seront comparés à ceux du second. Mettre deux fois le même carnet permet de rechercher les contacts similaires dans celui-ci.">
 <!ENTITY handleDuplicates.introtext2				"À chaque fois qu'une paire de contacts en double est trouvée, elle vous sera proposée. C'est vous qui décidez de celui que vous gardez et de celui que vous supprimez. ">
 <!ENTITY handleDuplicates.introtext3				"Vous pouvez tout arrêter à n'importe quel moment en pressant sur 'Annuler'. Si vous ne voulez pas traiter un doublon, utilisez le bouton 'Passer'.">
 <!ENTITY handleDuplicates.introtext4				"En fonction du nombre d'adresses et du CPU de votre ordinateur, ce processus peut prendre plusieurs minutes.">
-<!ENTITY handleDuplicates.removeWithoutAsking		"Automatiquement supprimer un des contacts lorsqu’ils sont totalement identiques.">
+<!ENTITY handleDuplicates.removeWithoutAsking		"Automatiquement supprimer un des contacts lorsqu’ils sont totalement identiques (ou conserver celui qui a un champs en plus).">
+<!ENTITY handleDuplicates.deferHandling				"Collecter tous les duplicats potentiels avant de les présenter.">
 
 <!-- text after process has finished -->
 <!ENTITY handleDuplicates.endheader					"C'est bon.">
 <!ENTITY handleDuplicates.endtext					"Vous venez de vous débarrasser des doublons et pouvez maintenant continuer avec quelque chose de plus amusant.">
-<!ENTITY handleDuplicates.endtext.numBefore			"Nombre de contacts avant  : ">
-<!ENTITY handleDuplicates.endtext.numAfter			"Nombre de contacts après  : ">
-<!ENTITY handleDuplicates.endtext.numRemoved		"Nombre de contacts enlevés: ">
-<!ENTITY handleDuplicates.endtext.numRemovedAuto	"Contacts enlevés automatiquement : ">
-<!ENTITY handleDuplicates.endtext.numPresented		"Paires de contacts présentés : ">
-<!ENTITY handleDuplicates.endtext.numRemovedMan		"Contacts enlevés manuellement : ">
-<!ENTITY handleDuplicates.endtext.numSkipped		"Contacts passés : ">
+<!ENTITY handleDuplicates.endtext.numBefore			"Nombre de contacts avant">
+<!ENTITY handleDuplicates.endtext.numAfter			"Nombre de contacts après">
+<!ENTITY handleDuplicates.endtext.numRemoved		"Nombre de contacts enlevés">
+<!ENTITY handleDuplicates.endtext.numRemovedAuto	"Contacts enlevés automatiquement">
+<!ENTITY handleDuplicates.endtext.numPresented		"Paires de contacts présentés">
+<!ENTITY handleDuplicates.endtext.numRemovedMan		"Contacts enlevés manuellement">
+<!ENTITY handleDuplicates.endtext.numSkipped		"Contacts passés">
+<!ENTITY handleDuplicates.endtext.numChanged		"Nombre de contact modifiés">
 <!ENTITY handleDuplicates.endtext.helpDevelopment	"You can help us to improve this Thunderbird Add-On by filing bug reports, commenting the wishlist or even writing code. Please visit our development site:">
 <!ENTITY handleDuplicates.endtext.provideFeedback	"Pour aider à améliorer cette extension, envoyez vos commentaires par email à :">
 <!ENTITY handleDuplicates.feedbackMail				"duplicate-contact-manager-for-thunderbird@googlegroups.com">
@@ -40,7 +43,8 @@
 <!ENTITY handleDuplicates.applynextbutton.accesskey	"A">
 <!ENTITY handleDuplicates.skipnextbutton.label		"Passer &#62;">
 <!ENTITY handleDuplicates.skipnextbutton.accesskey	"s">
-<!ENTITY handleDuplicates.cancelbutton.label		"Annuler">
+<!ENTITY handleDuplicates.stopbutton.label		"Annuler">
+<!ENTITY handleDuplicates.quitbutton.label		"Quitter">
 <!ENTITY handleDuplicates.firstcontact				"Premier Contact">
 <!ENTITY handleDuplicates.secondcontact				"Second Contact">
 <!ENTITY handleDuplicates.will_be_kept				"à conserver">
