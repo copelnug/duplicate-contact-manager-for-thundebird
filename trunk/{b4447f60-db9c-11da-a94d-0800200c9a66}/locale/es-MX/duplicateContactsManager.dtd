@@ -22,13 +22,13 @@
 <!-- text after process has finished -->
 <!ENTITY handleDuplicates.endheader					"Eso es todo.">
 <!ENTITY handleDuplicates.endtext					"You just got rid of these duplicates and can now continue with something that’s even more fun.">
-<!ENTITY handleDuplicates.endtext.numBefore			"Número de contactos antes: ">
-<!ENTITY handleDuplicates.endtext.numAfter			"Número de contactos después: ">
-<!ENTITY handleDuplicates.endtext.numRemoved		"Contactos eliminados: ">
-<!ENTITY handleDuplicates.endtext.numRemovedAuto	"Contactos eliminados automáticamente: ">
-<!ENTITY handleDuplicates.endtext.numPresented		"Pares de contactos presentados: ">
-<!ENTITY handleDuplicates.endtext.numRemovedMan		"Contactos eliminados manualmente: ">
-<!ENTITY handleDuplicates.endtext.numSkipped		"Contactos saltados: ">
+<!ENTITY handleDuplicates.endtext.numBefore			"Número de contactos antes">
+<!ENTITY handleDuplicates.endtext.numAfter			"Número de contactos después">
+<!ENTITY handleDuplicates.endtext.numRemoved		"Contactos eliminados">
+<!ENTITY handleDuplicates.endtext.numRemovedAuto	"Contactos eliminados automáticamente">
+<!ENTITY handleDuplicates.endtext.numPresented		"Pares de contactos presentados">
+<!ENTITY handleDuplicates.endtext.numRemovedMan		"Contactos eliminados manualmente">
+<!ENTITY handleDuplicates.endtext.numSkipped		"Contactos saltados">
 <!--TODO--><!ENTITY handleDuplicates.endtext.numChanged		"Entries changed">
 <!ENTITY handleDuplicates.endtext.helpDevelopment	"Para ayudar a mejorar este extensión de Thunderbird llene un reporte de error, comente en la lista o escriba código. Visite el sitio de desarrollo:">
 <!ENTITY handleDuplicates.endtext.provideFeedback	"o envíe sus sugerencias directamente a la lista de correo pública:">

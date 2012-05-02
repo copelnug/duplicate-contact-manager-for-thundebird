@@ -2,9 +2,10 @@
 /* Change history:
  * Version 0.9 :
  * - Can now edit contacts.
- * - Auto-remove for contacts wich only contain some more fields.
- * - Working with multiples address books.
+ * - Auto-removal of contacts which only contain some less fields.
+ * - Can work across two address books.
  * - Option to collect all potential duplicates before interacting with the user.
+ * - Progress bar and other usability improvements
  * Version 0.8:
  * - Offer to delete exact duplicates without asking
  * - Correctly search for exact duplicates
@@ -66,7 +67,7 @@ if(typeof(DuplicateContactsManager_Running) == "undefined") {
 			if (this.selectableProperty(property) || property=='PopularityIndex')
 				return (property == 'PreferDisplayName' ? "1" : "0");
 			else
-				return '';
+				return "";
 		},
 
 		/**
@@ -239,7 +240,7 @@ if(typeof(DuplicateContactsManager_Running) == "undefined") {
 					keptAbDir.modifyCard(keptCard);
 					this.totalCardsChanged++;
 				} catch (e) {
-					alert("Cannot update card '"+displayName+"': "+e);
+					alert("Internal error: cannot update card '"+displayName+"': "+e);
 				}
 			}
 	
@@ -270,7 +271,7 @@ if(typeof(DuplicateContactsManager_Running) == "undefined") {
 				if(auto)
 					this.totalCardsDeletedAuto++;
 			} catch (e) {
-				alert("Cannot remove card '"+displayName+"': "+e);
+				alert("Internal error: cannot remove card '"+displayName+"': "+e);
 			}
 			this.vcards[book][index] = null;	// set empty element, but leave element number as is
 		},
@@ -355,7 +356,7 @@ if(typeof(DuplicateContactsManager_Running) == "undefined") {
 					// Force/enable Thunderbird every 1000 milliseconds to redraw the progress bar etc.
 					// See also http://stackoverflow.com/questions/2592335/how-to-report-progress-of-a-javascript-function
 					// As a nice side effect, this allows the stop button to take effect while this main loop is active!
-					setTimeout(function() { DuplicateContactsManager_Running.DuplicateContactsManagerDuplicateManager.searchDuplicateIntervalAction(); }, 13);
+					setTimeout(function() { DuplicateEntriesWindow.searchDuplicateIntervalAction(); }, 13);
 					return;
 				}
 		
@@ -431,6 +432,25 @@ if(typeof(DuplicateContactsManager_Running) == "undefined") {
 				return value+""; // force string even for e.g. PopularityIndex
 		},
 
+		normalizeMiddlePrefixName: function(fn, ln) {
+			var p = null;
+			// move any wrongly attached middle initial(s) from last name to first name
+			var middlenames = "";
+			while (p = ln.match(/^\s*([A-Za-z])\s+(.*)$/)) {
+				middlenames += " "+p[1];
+				ln = p[2];
+			}
+			// move any wrongly attached name prefix(es) from first name to last name
+			var nameprefixes = "";
+			while (p = fn.match(/^(.+)\s(von|van|und|and|für|for|zur|der|de|geb|ben)\s*$/)) {
+				fn = p[1];
+				nameprefixes = p[2]+" "+nameprefixes;
+			}
+			fn = fn.replace(/^\s+/, "").replace(/\s+$/, "") + middlenames;
+			ln = nameprefixes + ln.replace(/^\s+/, "").replace(/\s+$/, "");
+			return [fn, ln];
+		},
+
 		getAbstractedProperty: function(card, property) {
 			var defaultValue = this.defaultValue(property);
 			if (property == "UUID" ||
@@ -450,9 +470,16 @@ if(typeof(DuplicateContactsManager_Running) == "undefined") {
 			if (property == 'FirstName' || property == 'LastName' || property == 'DisplayName') {
 				if (   value == this.getProperty(card, 'PrimaryEmail') || value == this.getProperty(card,  'SecondEmail'))
 					return defaultValue; // correct typical automatic copy mistake of email clients
-				if (property == 'DisplayName') // normalize order of first and last name
-					return value.replace(/^([^,]+),\s+(.+)$/,"$2 $1");
-
+				var p = null;
+				if (property == 'DisplayName') {
+					value = value.replace(/[\s]{2,}/g, ' '); // remove any multiple white spaces
+					// normalize order of first and last name
+					if (p = value.match(/^([^,]+),\s+(.+)$/)) {
+						[fn, ln] = this.normalizeMiddlePrefixName(p[2], p[1]);
+						value = fn + " " + ln;
+					}
+					return value;
+				}
 				var fn = this.getProperty(card, 'FirstName');
 				var ln = this.getProperty(card,  'LastName');
 				// correct order of first and last name
@@ -461,18 +488,12 @@ if(typeof(DuplicateContactsManager_Running) == "undefined") {
 					fn = this.getProperty(card,  'LastName');
 				}
 				else {
-					var lnfn = fn.match(/^([^,]+),\s+(.+)$/);
-					if (lnfn) {
-						fn = lnfn[2]+(ln != "" ? " "+ln : "");
-						ln = lnfn[1];
-					}
+					if (p = fn.match(/^([^,]+),\s+(.+)$/)) {
+						fn = p[2]+(ln != "" ? " "+ln : "");
+						ln = p[1];
 				}
-				var nameprefix = fn.match(/^(.+) (von|van|de|ben)$/);
-				// move wrongly attached name prefix from first name to last name
-				if (nameprefix) {
-					fn = nameprefix[1];
-					ln = nameprefix[2]+" "+ln;
 				}
+				[fn, ln] = this.normalizeMiddlePrefixName(fn, ln);
 				return (property == 'FirstName' ? fn : ln);
 			}
 			return value;
@@ -626,8 +647,42 @@ if(typeof(DuplicateContactsManager_Running) == "undefined") {
 			var a2 = card1['SecondEmail'];
 			var b1 = card2['PrimaryEmail'];
 			var b2 = card2['SecondEmail'];
-			return (a1 != "" && (a1 == b1 || a1 == b2)) || 
-					 (a2 != "" && (a2 == b1 || a2 == b2));
+			return ((a1 != "" && (a1 == b1 || a1 == b2)) || 
+					    (a2 != "" && (a2 == b1 || a2 == b2)) );
+		},
+
+		/**
+		 * Returns first, last, and display name,
+		 * completing them if needed (and easily possible) from DisplayName, PrimaryEmail, and SecondEmail
+		 */
+		completeFirstLastDisplayName: function(card) {
+			var fn = card[  'FirstName'];
+			var ln = card[   'LastName'];
+			var dn = card['DisplayName'];
+			if (dn == "" && fn != "" && ln != "")
+				dn = fn+" "+ln;
+			else if (fn == "" || ln == "" || dn == "") {
+				function matchFirstLastEmail(email) {
+				var p = email.match(/^\s*([A-Za-z0-9_\x80-\uFFFF]+)[\.\-_]+([A-Za-z0-9_\x80-\uFFFF]+)@/);
+					if(!p) // second attempt only works if email has not been converted to lower-case:
+						p = email.match(/^\s*([A-Z][a-z0-9_\x80-\uFFFF]*)([A-Z][a-z0-9_\x80-\uFFFF]*)@/);
+					return p;
+				}
+				var p = card['DisplayName' ].match(/^\s*([A-Za-z0-9_\x80-\uFFFF]+)\s+([A-Za-z0-9_\x80-\uFFFF]+)\s*$/);
+				if(!p) 
+					p = matchFirstLastEmail(card['PrimaryEmail']);
+				if(!p) 
+					p = matchFirstLastEmail(card[ 'SecondEmail']);
+				if (p) {
+					if (fn == "")
+						fn = p[1];
+					if (ln == "")
+						ln = p[2];
+					if (dn == "")
+						dn = p[1]+" "+p[2];
+				}
+			}
+			return [fn, ln, dn];
 		},
 
 		/**
@@ -635,22 +690,10 @@ if(typeof(DuplicateContactsManager_Running) == "undefined") {
 		 */
 		namesMatch: function(card1, card2) {
 			// strings are already lowercase and normalized
-			var d1 	= card1['DisplayName'];
-			var d2 	= card2['DisplayName'];
-			var f1 	= card1['FirstName'];
-			var f2 	= card2['FirstName'];
-			var l1 	= card1['LastName'];
-			var l2 	= card2['LastName'];
-			var fl1 = f1 + (f1 != '' && l1 != '' ? ' ' : '') + l1;
-			var fl2 = f2 + (f2 != '' && l2 != '' ? ' ' : '') + l2;
-			var match = // only one term needs to be true
-			(
-				(d1 != '' &&             d1 == d2            ) ||	// DisplayNames exist and equal
-				(f1 != '' && l1 != '' && f1 == f2 && l1 == l2) ||	// FirstName and LastName exist and equal
-				(d1 != '' &&             d1 == fl2           ) ||	// DisplayName1 equals FirstLast2  // too weak: || f2 == d1 || l2 == d1
-				(d2 != '' &&             d2 == fl1           )   	// DisplayName2 equals FirstLast1  // too weak: || f1 == d2 || l1 == d2
-			);
-			return match;
+			var [f1, l1, d1] = this.completeFirstLastDisplayName(card1);
+			var [f2, l2, d2] = this.completeFirstLastDisplayName(card2);
+			return ((d1 != "" &&             d1 == d2            ) ||	// DisplayNames exist and equal
+					(f1 != "" && l1 != "" && f1 == f2 && l1 == l2) );	// FirstName and LastName exist and equal
 		},
 
 		readAddressBooks: function() {
@@ -898,8 +941,8 @@ if(typeof(DuplicateContactsManager_Running) == "undefined") {
 			// remove multiple white spaces
 				.replace(/[\s]{2,}/g, ' ')
 			// remove leading and trailing space
-				.replace(/^[\s]/, '')
-				.replace(/[\s]$/, '')
+				.replace(/^\s+/, "")
+				.replace(/\s+$/, "")
 				.toLowerCase();
 		},
 				
@@ -948,7 +991,8 @@ if(typeof(DuplicateContactsManager_Running) == "undefined") {
 			  .replace(/[Ĳĳ]/g, 'ij')
 			
 			// remove single letters (like initials)
-			  .replace(/ [A-Za-z0-9] /g, ' ')
+			  .replace(/ [A-Za-z0-9] /g, ' ') // does not work recursively, just non-overlapping
+			  .replace(/ [A-Za-z0-9] /g, ' ') // needed if there are two consecutive initials!
 			  .replace(/^[A-Za-z0-9] /g, '')
 			  .replace(/ [A-Za-z0-9]$/g, '');
 		},
