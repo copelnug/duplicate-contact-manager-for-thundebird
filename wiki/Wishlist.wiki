@@ -2,15 +2,6 @@
 
 This page is used to track feature wishes so you don't have to mail them every time ;-)
 
-==Display fields with differences in other way than identical fields==
-In the duplicate pair dialog: In order to make differences between contacts easily visible, highlight fields with differences
-
-==Handling duplicates accross several address books==
-Most users have at least two address books, some even more. They want to be able to remove duplicates between several address books in one run.
-
-==Ability to switch the address book after calling "Find and handle duplicates..."==
-The user might not have notices that duplicate checking is applied to the currently opened address book. So instead of simply displaying the name in the start window, a dropdown list or some other selection control should be displayed.
-
 ==Display all contact fields in the duplicate window for adding data==
 Some users request this, since they want to manually add data to the remaining contact. On the other hand, it is important to have a quick overview over the field that contain the important (= the differing) values. So this might be an option/button "Show all fields" / "Show only fields with values" or "Show empty fields (On/Off)".
 
@@ -18,16 +9,13 @@ Some users request this, since they want to manually add data to the remaining c
 During the address book walkthrough, the user might recognize that both presented contacts of a pair have to be saved, but the user would like to complete/modify the data of one or both.
 
 ==Ability to delete both presented contacts==
-If none of the presented contacts is required any longer, e.g. because the more complete variant has been presented before, the user wants to eleminate both.
+If none of the presented contacts is required any longer, e.g. because the more complete variant has been presented before, the user wants to eliminate both.
 
 ==Store the information that a certain pair is not a duplicate in order to avoid presentation in future runs==
 If "John A" and "John B" turn out not to be the same person, the add-on might be so clever to memorize that information and save the user clicks in future runs.
 
 ==Trash can for deleted/modified contacts==
-As a backup, the add-on should copy each contact to be modified into a save place and also move contacts to be deleted over there instead of actuall deletion. This "safe place" could be a new address book. If "find duplicates accross address books" should ever be accomplished, this address book of course would have to be ignored.
-
-==The more complete contact should win by default==
-The system should make the more complete contact (the one with more fields filled in) the selected winner (the one to keep).
+As a backup, the add-on should copy each contact to be modified into a save place and also move contacts to be deleted over there instead of actual deletion. This "safe place" could be a new address book. If "find duplicates across address books" should ever be accomplished, this address book of course would have to be ignored.
 
 ==Display a list of all duplicates instead of processing pair by pair==
-The aim of this change would be to prevent all duplicates at a time in a list, where users can mass edit details and resolve duplicates, in order to save the time now used for waiting while the add-on is processing.
+The aim of this change would be to prevent all duplicates at a time in a list, where users can mass edit details and resolve duplicates, in order to save the time now used for waiting while the add-on is processing. (Half-done. Find duplicate first and ask later).
