@@ -1,5 +1,8 @@
 // This file is UTF-8. Please adjust you text editor prior to saving any changes!
 /* Change history:
+ * Version 0.9.2 :
+ * - few critical bug fixes
+ * - layout improvements
  * Version 0.9 :
  * - Can now edit contacts.
  * - Auto-removal of contacts which only contain some less fields.
@@ -235,7 +238,7 @@ if(typeof(DuplicateContactsManager_Running) == "undefined") {
 				}
 			}
 			if (entryModified) {
-				this.vcardsSimplified[keptBook][keptIndex] = null; // request reconstruction by getNormalizedCard
+				this.vcardsSimplified[keptBook][keptIndex] = null; // request reconstruction by getSimplifiedCard
 				try {
 					keptAbDir.modifyCard(keptCard);
 					this.totalCardsChanged++;
@@ -303,13 +306,15 @@ if(typeof(DuplicateContactsManager_Running) == "undefined") {
 					return false;
 				this.nowHandling = true;
 			}
-			if(this.duplicates.length > 0) {
+			do {
+				if (this.duplicates.length == 0) {
+				  return false;
+				}
 				[this.currentSearchPosition1, this.currentSearchPosition2] = this.duplicates.shift();
-				this.updateProgress();
-				return true;
-			}
-			else
-				return false;
+			} while(!this.vcards[this.BOOK_1][this.currentSearchPosition1] ||
+						  !this.vcards[this.BOOK_2][this.currentSearchPosition2]);
+			this.updateProgress();
+			return true;
 		},
 
 		/**
@@ -360,10 +365,10 @@ if(typeof(DuplicateContactsManager_Running) == "undefined") {
 					return;
 				}
 		
-				this.card1 = this.getNormalizedCard(this.BOOK_1, this.currentSearchPosition1);
-				this.card2 = this.getNormalizedCard(this.BOOK_2, this.currentSearchPosition2);	
-				var mailmatch = this.mailAddressesMatch(this.card1, this.card2);
-				var namesmatch = this.namesMatch(this.card1, this.card2);
+				var simplified_card1 = this.getSimplifiedCard(this.BOOK_1, this.currentSearchPosition1);
+				var simplified_card2 = this.getSimplifiedCard(this.BOOK_2, this.currentSearchPosition2);	
+				var mailsmatch = this.mailsMatch(simplified_card1, simplified_card2);
+				var namesmatch = this.namesMatch(simplified_card1, simplified_card2);
 				var	cardscompare = this.abCardsCompare(
 					this.vcards[this.BOOK_1][this.currentSearchPosition1], 
 					this.vcards[this.BOOK_2][this.currentSearchPosition2]
@@ -375,7 +380,7 @@ if(typeof(DuplicateContactsManager_Running) == "undefined") {
 					else
 						this.deleteAbCard(this.abDir2, this.BOOK_2, this.currentSearchPosition2, true);
 				}
-				else if (mailmatch || namesmatch) {
+				else if (mailsmatch || namesmatch) {
 					// OK, we found something that looks like a duplicate.
 					//window.clearInterval(this.searchInterval);
 
@@ -388,7 +393,7 @@ if(typeof(DuplicateContactsManager_Running) == "undefined") {
 						this.enable('applynextbutton');
 						this.window.removeAttribute('wait-cursor');
 						this.statustext.setAttribute('value', this.stringBundle.getString(
-							mailmatch ? 'matchingEmailAddresses' : 'matchingNames'));
+							mailsmatch ? 'matchingEmailAddresses' : 'matchingNames'));
 						this.displayCardData(this.currentSearchPosition1, this.currentSearchPosition2, cardscompare);
 						return;
 					}
@@ -504,7 +509,7 @@ if(typeof(DuplicateContactsManager_Running) == "undefined") {
 		 * only those fields which are required for comparison, 
 		 * some pre-processing already performed on the necessary fields.
 		 */
-		getNormalizedCard: function(book, i) {
+		getSimplifiedCard: function(book, i) {
 			if (!this.vcardsSimplified[book][i]) {
 				if (this.vcards[book][i]) {
 					var card = this.vcards[book][i].QueryInterface(Components.interfaces.nsIAbCard);
@@ -642,7 +647,7 @@ if(typeof(DuplicateContactsManager_Running) == "undefined") {
 		 * - if firstname_lastname@domain.tld and foo@domain.tld are available, matching
 		 *   names should be checked.
 		 */
-		mailAddressesMatch: function(card1, card2) {
+		mailsMatch: function(card1, card2) {
 			var a1 = card1['PrimaryEmail'];
 			var a2 = card1['SecondEmail'];
 			var b1 = card2['PrimaryEmail'];
@@ -869,8 +874,8 @@ if(typeof(DuplicateContactsManager_Running) == "undefined") {
 						else
 							return (s1<s2 ? s1+" "+s2 : s2+" "+s1);
 					}
-					value1 = setOf(value1, secondvalue1);
-					value2 = setOf(value2, secondvalue2);
+					value1 = setOf(value1, secondvalue1).toLowerCase();
+					value2 = setOf(value2, secondvalue2).toLowerCase();
 				}
 				var defaultValue = this.defaultValue(property);
 				if (value1 != value2) {
