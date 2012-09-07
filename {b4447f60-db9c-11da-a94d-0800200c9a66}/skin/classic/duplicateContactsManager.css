@@ -35,11 +35,19 @@ description.value {
 
 #handleDuplicates-window, #AttributesTable {
 	width: 800px;
+}
+#handleDuplicates-window {
 	height: 600px;
 }
 #AttributesTable {
-	height: 500px;
 	border: 1px inset;
+}
+#explanation, #AttributesTable {
+	height: 550px;
+	overflow-y: auto;
+}
+#duplicatesButtonsBox {
+	padding-bottom: 10px;
 }
 
 radio#columnUseLeft, radio#columnUseRight {
