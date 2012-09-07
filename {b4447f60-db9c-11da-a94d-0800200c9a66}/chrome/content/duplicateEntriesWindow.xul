@@ -15,123 +15,124 @@
 	<stringbundleset id="duplicateContactsManagerStringbundleset">
 		<stringbundle id="bundle_duplicateContactsManager" src="chrome://duplicatecontactsmanager/locale/duplicateContactsManager.properties"/>
 	</stringbundleset>
-	
-	<statusbar id="duplicates-status-bar">
-		<statusbarpanel id="statusText" flex="0">
-			<label id="statusText_label" value="&handleDuplicates.status_default;"/>
-			<spacer flex="4"/>
-		</statusbarpanel>
-		<statusbarpanel id="statusAddressBook1" flex="1">
-			<label id="statusAddressBook1_label" value="AddressBook1" />
-			<label id="statusAddressBook1_size" value="(size)" />
-			<spacer flex="1"/>
-		</statusbarpanel>
-		<statusbarpanel id="progressText" flex="1">
-			<label id="progressText_label" value="" />
-		</statusbarpanel>
-		<statusbarpanel flex="0">
-			<spacer flex="1"/>
-			<progressmeter id="progressMeter" mode="determined" value="0%" style="display: none"/>
-			<spacer flex="1"/>
-		</statusbarpanel>
-		<statusbarpanel id="statusAddressBook2" flex="1">
-			<label id="statusAddressBook2_label" value="AddressBook2" />
-			<label id="statusAddressBook2_size" value="(size)" />
-			<spacer flex="2"/>
-		</statusbarpanel>
-	</statusbar>
-	<hbox flex="1" id="explanation" style="display: block">
-		<vbox flex="1" style="text-align: center">
-			<description class="explheader">&handleDuplicates.introheader;</description>
-			<description>&handleDuplicates.introtext;</description>
-      <hbox id="addressbooklists">
-      </hbox>
-			<description>&handleDuplicates.chooseSecondary;</description>
-			<description>&handleDuplicates.introtext2;</description>
-			<checkbox id="autoremove" label="&handleDuplicates.removeWithoutAsking;"/>
-			<description>&handleDuplicates.introtext4;</description>
-			<checkbox id="deferhandling" label="&handleDuplicates.deferHandling;"/>
-			<description>&handleDuplicates.introtext3;</description>
-			<description>&handleDuplicates.pleasepressstart;</description>
-		</vbox>
-	</hbox>
-	<hbox flex="1" id="tablepane" style="display: none">
-		<radiogroup>
-			<grid id="AttributesTable" flex="1">
-				<columns><column flex="1" /><column flex="2" /><column flex="2" /></columns>
-				<rows id="AttributesTableRows">
-					<row id="tableheader">
-						<hbox>
-							<label id="fieldLabels" class="field" value=" " />
-						</hbox>
-						<hbox id="columnHeaderLeft" class="used" oncommand="DuplicateEntriesWindow.toggleContactLeftRight('left')">
-							<radio id="columnUseLeft" label="&handleDuplicates.firstcontact;" selected="true" />
-							<label id="columnKeptInfoLeft" value="&handleDuplicates.will_be_kept;" />
-						</hbox>
-						<hbox id="columnHeaderRight" class="unused" oncommand="DuplicateEntriesWindow.toggleContactLeftRight('right')">
-							<radio id="columnUseRight" label="&handleDuplicates.secondcontact;" selected="false" />
-							<label id="columnKeptInfoRight" value="&handleDuplicates.will_be_removed;" />
-						</hbox>
-					</row>
-				</rows>
-			</grid>
-		</radiogroup>
-	</hbox>
-	<hbox flex="1" id="endinfo" style="display: none">
-		<vbox flex="1" style="text-align: center">
-			<description class="explheader">&handleDuplicates.endheader;</description>
-			<vbox style="background-color: #FFFFFF; margin: 10px 20px 5px 20px; padding: 10px; border: 1px inset;">
-				<hbox><description class="text-line" value="&handleDuplicates.endtext.numBefore;:" />
-				      <description class="text-line  value" id="resultNumBefore" value="0" /></hbox>
-				<hbox><description class="text-line" value="&handleDuplicates.endtext.numAfter;:" />
-				      <description class="text-line  value" id="resultNumAfter" value="0" /></hbox>
-				<hbox><description class="text-line" value="&handleDuplicates.endtext.numRemovedMan;:" />
-				      <description class="text-line  value" id="resultNumRemovedMan" value="0" /></hbox>
-				<hbox><description class="text-line" value="&handleDuplicates.endtext.numRemovedAuto;:" />
-				      <description class="text-line  value" id="resultNumRemovedAuto" value="0" /></hbox>
-				<hbox><description class="text-line" value="&handleDuplicates.endtext.numChanged;:" />
-				      <description class="text-line  value" id="resultNumChanged" value="0" /></hbox>
-				<hbox><description class="text-line" value="&handleDuplicates.endtext.numSkipped;:" />
-				      <description class="text-line  value" id="resultNumSkipped" value="0" /></hbox>
+
+	<vbox id="mainbox">
+		<statusbar id="duplicates-status-bar">
+			<statusbarpanel id="statusText" flex="0">
+				<label id="statusText_label" value="&handleDuplicates.status_default;"/>
+				<spacer flex="4"/>
+			</statusbarpanel>
+			<statusbarpanel id="statusAddressBook1" flex="1">
+				<label id="statusAddressBook1_label" value="AddressBook1" />
+				<label id="statusAddressBook1_size" value="(size)" />
+				<spacer flex="1"/>
+			</statusbarpanel>
+			<statusbarpanel id="progressText" flex="1">
+				<label id="progressText_label" value="" />
+			</statusbarpanel>
+			<statusbarpanel flex="0">
+				<spacer flex="1"/>
+				<progressmeter id="progressMeter" mode="determined" value="0%" style="display: none"/>
+				<spacer flex="1"/>
+			</statusbarpanel>
+			<statusbarpanel id="statusAddressBook2" flex="1">
+				<label id="statusAddressBook2_label" value="AddressBook2" />
+				<label id="statusAddressBook2_size" value="(size)" />
+				<spacer flex="2"/>
+			</statusbarpanel>
+		</statusbar>
+		<hbox flex="1" id="explanation" style="display: block">
+			<vbox flex="1" style="text-align: center">
+				<description class="explheader">&handleDuplicates.introheader;</description>
+				<description>&handleDuplicates.introtext;</description>
+				<hbox id="addressbooklists"></hbox>
+				<description>&handleDuplicates.chooseSecondary;</description>
+				<description>&handleDuplicates.introtext2;</description>
+				<checkbox id="autoremove" label="&handleDuplicates.removeWithoutAsking;"/>
+				<description>&handleDuplicates.introtext4;</description>
+				<checkbox id="deferhandling" label="&handleDuplicates.deferHandling;"/>
+				<description>&handleDuplicates.introtext3;</description>
+				<description>&handleDuplicates.pleasepressstart;</description>
 			</vbox>
-			<vbox style="background-color: #FFFFFF; margin: 5px 20px 20px 20px; padding: 10px; border: 1px inset;">
-				<description>&handleDuplicates.endtext.helpDevelopment;</description>
-				<description><html:a class="text-link" href="&handleDuplicates.devSiteUrl;">&handleDuplicates.devSiteUrl;</html:a></description>
-				<description>&handleDuplicates.endtext.provideFeedback;</description>
-				<description><html:a class="text-link" href="mailto:&handleDuplicates.feedbackMail;?subject=Feedback">&handleDuplicates.feedbackMail;</html:a></description>
+		</hbox>
+		<hbox flex="1" id="tablepane" style="display: none">
+			<radiogroup>
+				<grid id="AttributesTable" flex="1">
+					<columns><column flex="1" /><column flex="2" /><column flex="2" /></columns>
+					<rows id="AttributesTableRows">
+						<row id="tableheader">
+							<hbox>
+								<label id="fieldLabels" class="field" value=" " />
+							</hbox>
+							<hbox id="columnHeaderLeft" class="used" oncommand="DuplicateEntriesWindow.toggleContactLeftRight('left')">
+								<radio id="columnUseLeft" label="&handleDuplicates.firstcontact;" selected="true" />
+								<label id="columnKeptInfoLeft" value="&handleDuplicates.will_be_kept;" />
+							</hbox>
+							<hbox id="columnHeaderRight" class="unused" oncommand="DuplicateEntriesWindow.toggleContactLeftRight('right')">
+								<radio id="columnUseRight" label="&handleDuplicates.secondcontact;" selected="false" />
+								<label id="columnKeptInfoRight" value="&handleDuplicates.will_be_removed;" />
+							</hbox>
+						</row>
+					</rows>
+				</grid>
+			</radiogroup>
+		</hbox>
+		<hbox flex="1" id="endinfo" style="display: none">
+			<vbox flex="1" style="text-align: center">
+				<description class="explheader">&handleDuplicates.endheader;</description>
+				<vbox style="background-color: #FFFFFF; margin: 10px 20px 5px 20px; padding: 10px; border: 1px inset;">
+					<hbox><description class="text-line" value="&handleDuplicates.endtext.numBefore;:" />
+						  <description class="text-line  value" id="resultNumBefore" value="0" /></hbox>
+					<hbox><description class="text-line" value="&handleDuplicates.endtext.numAfter;:" />
+						  <description class="text-line  value" id="resultNumAfter" value="0" /></hbox>
+					<hbox><description class="text-line" value="&handleDuplicates.endtext.numRemovedMan;:" />
+						  <description class="text-line  value" id="resultNumRemovedMan" value="0" /></hbox>
+					<hbox><description class="text-line" value="&handleDuplicates.endtext.numRemovedAuto;:" />
+						  <description class="text-line  value" id="resultNumRemovedAuto" value="0" /></hbox>
+					<hbox><description class="text-line" value="&handleDuplicates.endtext.numChanged;:" />
+						  <description class="text-line  value" id="resultNumChanged" value="0" /></hbox>
+					<hbox><description class="text-line" value="&handleDuplicates.endtext.numSkipped;:" />
+						  <description class="text-line  value" id="resultNumSkipped" value="0" /></hbox>
+				</vbox>
+				<vbox style="background-color: #FFFFFF; margin: 5px 20px 20px 20px; padding: 10px; border: 1px inset;">
+					<description>&handleDuplicates.endtext.helpDevelopment;</description>
+					<description><html:a class="text-link" href="&handleDuplicates.devSiteUrl;">&handleDuplicates.devSiteUrl;</html:a></description>
+					<description>&handleDuplicates.endtext.provideFeedback;</description>
+					<description><html:a class="text-link" href="mailto:&handleDuplicates.feedbackMail;?subject=Feedback">&handleDuplicates.feedbackMail;</html:a></description>
+				</vbox>
 			</vbox>
-		</vbox>
-	</hbox>
-	<hbox align="center" id="duplicatesButtonsBox">
-		<button	id="startbutton"
-			class="dialog"
-			label="&handleDuplicates.startbutton.label;"
-			disabled="false"
-			accesskey="&handleDuplicates.startbutton.accesskey;"
-			oncommand="DuplicateEntriesWindow.startSearch()" />
-		<button	id="skipnextbutton"
-			class="dialog"
-			label="&handleDuplicates.skipnextbutton.label;"
-			disabled="true"
-			accesskey="&handleDuplicates.skipnextbutton.accesskey;"
-			oncommand="DuplicateEntriesWindow.skipAndSearchNextDuplicate()"/>
-		<button	id="applynextbutton" flex="1"
-			class="dialog"
-			label="&handleDuplicates.applynextbutton.label;"
-			disabled="true"
-			visibility="hidden"
-			accesskey="&handleDuplicates.applynextbutton.accesskey;"
-			oncommand="DuplicateEntriesWindow.applyAndSearchNextDuplicate();" />
-		<spacer flex="3" />
-		<button	id="stopbutton" style="display: none"
-			class="dialog"
-			label="&handleDuplicates.stopbutton.label;"
-			disabled="false"
-			oncommand="DuplicateEntriesWindow.endSearch();" />
-		<button	id="quitbutton"
-			class="dialog"
-			label="&handleDuplicates.quitbutton.label;"
-			disabled="false"
-			oncommand="window.close();" />
-	</hbox>
+		</hbox>
+		<hbox align="center" id="duplicatesButtonsBox">
+			<button	id="startbutton"
+				class="dialog"
+				label="&handleDuplicates.startbutton.label;"
+				disabled="false"
+				accesskey="&handleDuplicates.startbutton.accesskey;"
+				oncommand="DuplicateEntriesWindow.startSearch()" />
+			<button	id="skipnextbutton"
+				class="dialog"
+				label="&handleDuplicates.skipnextbutton.label;"
+				disabled="true"
+				accesskey="&handleDuplicates.skipnextbutton.accesskey;"
+				oncommand="DuplicateEntriesWindow.skipAndSearchNextDuplicate()"/>
+			<button	id="applynextbutton" flex="1"
+				class="dialog"
+				label="&handleDuplicates.applynextbutton.label;"
+				disabled="true"
+				visibility="hidden"
+				accesskey="&handleDuplicates.applynextbutton.accesskey;"
+				oncommand="DuplicateEntriesWindow.applyAndSearchNextDuplicate();" />
+			<spacer flex="3" />
+			<button	id="stopbutton" style="display: none"
+				class="dialog"
+				label="&handleDuplicates.stopbutton.label;"
+				disabled="false"
+				oncommand="DuplicateEntriesWindow.endSearch();" />
+			<button	id="quitbutton"
+				class="dialog"
+				label="&handleDuplicates.quitbutton.label;"
+				disabled="false"
+				oncommand="window.close();" />
+		</hbox>
+	</vbox>
 </window>
