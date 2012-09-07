@@ -132,3 +132,7 @@ hbox.addressbooklists .addressbookname {
 checkbox {
 	text-align: left;
 }
+#mainbox{
+	min-width:550;
+	overflow: auto;
+}
